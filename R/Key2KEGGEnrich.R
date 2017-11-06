@@ -60,7 +60,9 @@ return (filterValuePathNameDF)
 #' @param filterMethod pValue or other character vector
 #' @param filterValue must by numeric, value from 0 to 1
 #' @param ifbarplot barplot or not, TRUE/FALSE
+#' @param ifMapOnPath pathway mapping or not, TRUE/FALSE
 #' @param mapping gene on pathway or not, TRUE/FALSE
+#' @param type KEGG, Reactome, BP,MF,CC
 #' @param imgWidth the width of export file
 #' @param imgHeight the height of export file
 #' @return data in dataframe class with pValue, adjust pValue of significate KEGG pathway

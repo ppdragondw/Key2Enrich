@@ -1,7 +1,7 @@
 Package: Key2Enrich
 Type: Package
 Title: Gene/Protein dataset enrichment
-Version: 0.1.0
+Version: 0.99.0
 Author: Dong Wang
 Maintainer: Dong Wang <dong.2.wang@ucdenver.edu>
 Description: This package provides enrichment analysis function for gene/protein dataset. The dataset can be mapped on KEGGG/GO Ontology/Reactome database.
@@ -17,14 +17,15 @@ Depends:
     ggplot2,
     grid,
     colorspace,
+    gtable,
     clusterProfiler,
     ReactomePA,
-    DOSE,
-    gtable,
+    DOSE
+Import:
     org.Rn.eg.db,
     org.Hs.eg.db,
-    org.Mm.eg.db
-Suggests: knitr,
-    rmarkdown,
-    testthat
+    org.Mm.eg.db,
+Suggests: 
+    knitr,
+    rmarkdown
 VignetteBuilder: knitr

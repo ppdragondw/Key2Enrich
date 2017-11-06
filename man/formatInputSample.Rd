@@ -7,6 +7,8 @@
 formatInputSample(filename, IDColumn, logFCColumn, IDType, inputSpecies)
 }
 \arguments{
+\item{filename}{input file in csv format}
+
 \item{IDColumn}{must be numberic,the column number of sample ID}
 
 \item{logFCColumn}{must be numberic,the column number of sample log fold change}
@@ -14,8 +16,6 @@ formatInputSample(filename, IDColumn, logFCColumn, IDType, inputSpecies)
 \item{IDType}{Human: entrezgene, hgnc_symbol, ensembl_gene_id, Mouse: entrezgene, mgi_symbol, ensembl_gene_id, Rat: entrezgene, rgd_symbol, ensembl_gene_id}
 
 \item{inputSpecies}{human, mouse, rat}
-
-\item{fileName}{input file in csv format}
 }
 \value{
 input sample in dataframe class with entrez ID, symbol and ensembl ID

@@ -4,7 +4,6 @@
 #' @param inputSample  formatted input sample
 #' @param inputSpecies human, mouse, rat
 #' @param adjustMethod p.adjust.methods, c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")
-#' @param filterMethod pValue or other character vector
 #' @param filterValue must by numeric, value from 0 to 1
 #' @param imgWidth the width of export file
 #' @param imgHeight the height of export file

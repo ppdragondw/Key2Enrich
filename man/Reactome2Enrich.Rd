@@ -19,8 +19,6 @@ Reactome2Enrich(inputSample, inputSpecies, adjustMethod, filterValue, imgWidth,
 \item{imgWidth}{the width of export file}
 
 \item{imgHeight}{the height of export file}
-
-\item{filterMethod}{pValue or other character vector}
 }
 \value{
 data in dataframe class with pValue, adjust pValue of significate Reactome pathway

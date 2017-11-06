@@ -20,6 +20,10 @@ Key2KEGGEnrich(inputSampleKEGG, inputSpecies, adjustMethod, filterMethod,
 
 \item{ifbarplot}{barplot or not, TRUE/FALSE}
 
+\item{ifMapOnPath}{pathway mapping or not, TRUE/FALSE}
+
+\item{type}{KEGG, Reactome, BP,MF,CC}
+
 \item{imgWidth}{the width of export file}
 
 \item{imgHeight}{the height of export file}

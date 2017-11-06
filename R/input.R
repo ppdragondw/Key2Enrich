@@ -20,7 +20,7 @@ return (sample)
 
 #' Format input file to dataframe class with entrez ID, symbol and ensembl ID
 #'
-#' @param fileName input file in csv format
+#' @param filename input file in csv format
 #' @param IDColumn must be numberic,the column number of sample ID
 #' @param logFCColumn must be numberic,the column number of sample log fold change
 #' @param IDType Human: entrezgene, hgnc_symbol, ensembl_gene_id, Mouse: entrezgene, mgi_symbol, ensembl_gene_id, Rat: entrezgene, rgd_symbol, ensembl_gene_id
