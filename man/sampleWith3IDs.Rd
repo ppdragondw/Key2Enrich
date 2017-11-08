@@ -26,6 +26,6 @@ sample with entrez ID, symbol and ensembl ID
 Mapping input file with ID to symbol, entrez, ensembl IDs
 }
 \examples{
-thisSampleWith3IDs<-sampleWith3IDs("sampleFile_entrezgene.csv",1,2,"entrezgene","mouse")
+#thisSampleWith3IDs<-sampleWith3IDs("sampleFile_entrezgene.csv",1,2,"entrezgene","mouse")
 
 }

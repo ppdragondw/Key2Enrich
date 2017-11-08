@@ -16,5 +16,5 @@ KEGG pathway ID of input species
 Get all KEGG pathway name and ID of species
 }
 \examples{
-getAllPathNameAndID("mmu")
+#getAllPathNameAndID("mmu")
 }

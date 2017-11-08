@@ -11,7 +11,8 @@ LazyData: true
 RoxygenNote: 6.0.1
 Depends:
     KEGGREST,
-    biomaRt    
+    biomaRt,
+    R (>= 2.10)
 Imports:
     clusterProfiler,
     ReactomePA,
@@ -30,3 +31,5 @@ Suggests:
     rmarkdown,
     testthat
 VignetteBuilder: knitr
+biocViews: Software, BiologicalQuestion, GeneSetEnrichment
+

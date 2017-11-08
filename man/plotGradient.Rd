@@ -18,6 +18,6 @@ NA
 Plot heatmap color key for node
 }
 \examples{
- plotGradient(120,5)
+ #plotGradient(120,5)
 
 }

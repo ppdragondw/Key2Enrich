@@ -22,5 +22,5 @@ data in dataframe class with pValue, adjust pValue
 Plot barplot
 }
 \examples{
-reactomePValueMatrix<-Reactome2Enrich(inputSample,"mouse","fdr",0.05,15,20)
+#reactomePValueMatrix<-Reactome2Enrich(inputSample,"mouse","fdr",0.05,15,20)
 }

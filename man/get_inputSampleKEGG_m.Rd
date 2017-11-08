@@ -18,6 +18,6 @@ sample genes in specific KEGG pathway
 Get sample genes in specific KEGG pathway
 }
 \examples{
-get_inputSampleKEGG_m(thisInputSampleKEGG,geneInOnePathwayDF)
+#get_inputSampleKEGG_m(thisInputSampleKEGG,geneInOnePathwayDF)
 
 }

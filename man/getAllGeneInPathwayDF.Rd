@@ -16,5 +16,5 @@ KEGG pathway ID, and its gene list in KEGG Gene ID format
 Get all KEGG pathway ID and its corresponding gene list in KEGG gene ID format
 }
 \examples{
-getAllGeneInPathwayDF("mmu")
+#getAllGeneInPathwayDF("mmu")
 }

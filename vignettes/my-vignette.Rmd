@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 fig_caption: yes
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Key2Enrich}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -28,10 +28,12 @@ head(inputSample)
 ```
 
 KEGG pathway enrichment analysis, this step will take some time, the data is getting from KEGG database by using KEGG API.
+```{r echo=TRUE, fig.show='hold', message=FALSE, warning=FALSE}
+
 thisKEGGEnricherMatrix<-KEGGEnricherMatrixRealTime(inputSample,"mouse","fdr","fdr",0.05)
 colnames(thisKEGGEnricherMatrix)
 head(thisKEGGEnricherMatrix[c(1:6,11:13)])
-
+```
 
 Then the result can be show in bar plot.
 Key2EnrichBarplot(thisKEGGEnricherMatrix,"KEGG",15,20)
@@ -41,14 +43,16 @@ Key2EnrichBarplot(thisKEGGEnricherMatrix,"KEGG",15,20)
 knitr::include_graphics('./figure/KEGG_barplot.png')
 ```
 
-These step can be done by using one function. The figure sizes have been customised so that you can easily put two images side-by-side. The genes can mapped to the nodes of KEGG pathway by using the parameter ifMapOnPath=TRUE
+These step can be done by using one function. The figure sizes have been customised so that you can easily put two images side-by-side. The genes can mapped to the nodes of KEGG pathway by using the parameter ifMapOnPath=TRUE.
 
+```{r echo=TRUE, fig.show='hold', message=FALSE, warning=FALSE}
 
-KEGGSigMx<-Key2KEGGEnrich(inputSampleKEGG=inputSample,inputSpecies="mouse",
+KEGGSigMx<-Key2KEGGEnrich(inputSample=inputSample,inputSpecies="mouse",
                           adjustMethod="fdr",filterMethod="fdr",filterValue=0.05,
                           ifbarplot=TRUE,ifMapOnPath=TRUE,type="KEGG",
                           imgWidth=15,imgHeight=20)
 head(KEGGSigMx[c(1:6,11:13)])
+```
 
 ```{r  echo=FALSE, fig.cap="Signicantly enriched KEGG pathways", message=FALSE, warning=FALSE, out.width='97%'}
 knitr::include_graphics('./figure/KEGG_barplot.png')

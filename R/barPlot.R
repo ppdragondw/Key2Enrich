@@ -6,7 +6,7 @@
 #' @param imgHeight the height of export file
 #' @return data in dataframe class with pValue, adjust pValue
 #' @examples
-#' reactomePValueMatrix<-Reactome2Enrich(inputSample,"mouse","fdr",0.05,15,20)
+#' #reactomePValueMatrix<-Reactome2Enrich(inputSample,"mouse","fdr",0.05,15,20)
 #' @import ggplot2
 #' @importFrom grDevices pdf
 #' @import org.Hs.eg.db
@@ -37,6 +37,9 @@ Key2EnrichBarplot<-function (filterValuePathNameDF,type,imgWidth,imgHeight)
     thisColor="tan4"
     fileName<- "GO CC enrichment.pdf"
   }
+  pathName<-NULL
+  negativeLog<-NULL
+  ratio<-NULL
 
   pdf(file=fileName,width=imgWidth,height=imgHeight)
 
@@ -70,12 +73,15 @@ Key2EnrichBarplot<-function (filterValuePathNameDF,type,imgWidth,imgHeight)
 #' @param p1 ggplot
 #' @param p2 ggplot
 #' @return plot
-#' @examples multiplot(p1,p2)
+#' @examples #multiplot(p1,p2)
 #' @import grid
 #' @import gtable
 
 multiplot <- function(p1,p2) {
   grid.newpage()
+
+  name<-NULL
+  r<-NULL
 
   #extract gtable
   g1<-ggplot_gtable(ggplot_build(p1))

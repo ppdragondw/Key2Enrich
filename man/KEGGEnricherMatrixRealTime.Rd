@@ -26,5 +26,5 @@ data in dataframe class with pValue, adjust pValue of significate KEGG pathway
 Get enrichment matrix of enriched KEGG pathway
 }
 \examples{
-thisKEGGEnricherMatrix<-KEGGEnricherMatrixRealTime(inputSample,"mouse","fdr","fdr",0.05)
+#thisKEGGEnricherMatrix<-KEGGEnricherMatrixRealTime(inputSample,"mouse","fdr","fdr",0.05)
 }

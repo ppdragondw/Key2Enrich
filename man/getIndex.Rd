@@ -18,6 +18,6 @@ index
 Get index of value in array for right color key
 }
 \examples{
- thisArray<-seq(0,2,length.out = 10)
- getIndex(thisArray,1.6)
+ #thisArray<-seq(0,2,length.out = 10)
+#getIndex(thisArray,1.6)
 }

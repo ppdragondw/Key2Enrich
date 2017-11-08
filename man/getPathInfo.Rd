@@ -16,5 +16,5 @@ list class with entryID,name,type,link, X of graphic,Y of graphic,width of graph
 Get KEGG pathway info from xmlRoot
 }
 \examples{
-getPathInfo(r)
+#getPathInfo(r)
 }

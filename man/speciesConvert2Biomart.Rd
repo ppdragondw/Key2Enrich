@@ -19,6 +19,6 @@ rat:rnorvegicus_gene_ensembl
 Convert input species to biomart species
 }
 \examples{
-biomartSpecies<-speciesConvert2Biomart("mouse")
+#biomartSpecies<-speciesConvert2Biomart("mouse")
 
 }

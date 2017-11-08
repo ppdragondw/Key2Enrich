@@ -11,13 +11,9 @@
 #' @return data in dataframe class with pValue, adjust pValue of significate Gene Ontology
 #' @export
 #' @examples
-#' egoDF<-GO2Enrich(inputSample=inputSample,
-#' inputSpecies="mouse",
-#' adjustMethod="fdr",
-#' filterValue=0.05,
-#' GOType="BP",
-#' imgWidth=15,
-#' imgHeight=20)
+#' #egoDF<-GO2Enrich(inputSample=inputSample,inputSpecies="mouse",
+#' #                 adjustMethod="fdr",filterValue=0.05,GOType="BP",
+#' #                 imgWidth=15,imgHeight=20)
 #' @import org.Hs.eg.db
 #' @import org.Mm.eg.db
 #' @import org.Rn.eg.db

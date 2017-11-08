@@ -3,7 +3,7 @@
 #' @param file file name
 #' @return xmlRoot of file
 #' @export
-#' @examples parseKGMLFile("mmu05321.xml")
+#' @examples #parseKGMLFile("mmu05321.xml")
 #' @importFrom XML xmlTreeParse xmlAttrs xmlChildren xmlRoot xmlName xmlErrorCumulator
 
 parseKGMLFile <- function(file) {
@@ -37,7 +37,7 @@ parseKGMLFile <- function(file) {
 #' @param r xmlRoot
 #' @return list class with entryID,name,type,link, X of graphic,Y of graphic,width of graphic,height of graphic
 #' @export
-#' @examples getPathInfo(r)
+#' @examples #getPathInfo(r)
   getPathInfo<-function(r){
   ## parse them
     attrs <- xmlAttrs(r)
@@ -100,7 +100,7 @@ parseKGMLFile <- function(file) {
   #' @param thisGeneKEGGID gene KEGG ID
   #' @return character vector with name,type, X of graphic,Y of graphic,width of graphic,height of graphic
   #' @export
-  #' @examples parseGraphic(thisGeneKEGGID)
+  #' @examples #parseGraphic(thisGeneKEGGID)
    parseGraphic <- function(thisGeneKEGGID) {
    graphicName<-unname(thisGeneKEGGID["name"])
    graphicType<-unname(thisGeneKEGGID["type"])
@@ -118,7 +118,7 @@ parseKGMLFile <- function(file) {
    #' @param nodeDF output dataframe
    #' @export
    #' @return dataframe class of node info
-   #' @examples parseList2Dataframe(nodeList,nodeDF)
+   #' @examples #parseList2Dataframe(nodeList,nodeDF)
 parseList2Dataframe<-function(nodeList,nodeDF){
 
 

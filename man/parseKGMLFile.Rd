@@ -16,5 +16,5 @@ xmlRoot of file
 Read XML file
 }
 \examples{
-parseKGMLFile("mmu05321.xml")
+#parseKGMLFile("mmu05321.xml")
 }

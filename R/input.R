@@ -7,7 +7,7 @@
 #' Mouse: entrezgene, mgi_symbol, ensembl_gene_id,
 #' Rat: entrezgene, rgd_symbol, ensembl_gene_id
 #' @return Sample file in data.frame format
-#' @examples entrezgene_sample<-readInputFile("sampleFile_entrezgene.csv",1,2,"entrezgene")
+#' @examples #entrezgene_sample<-readInputFile("sampleFile_entrezgene.csv",1,2,"entrezgene")
 #'
 readInputFile<-function (fileName,IDColumn,logFCColumn,IDType){
 inputSample<-read.csv(fileName)
@@ -57,7 +57,7 @@ formatInputSample<-function (filename,IDColumn,logFCColumn,IDType,inputSpecies){
 #' human:hsapiens_gene_ensembl,
 #' mouse:mmusculus_gene_ensembl,
 #' rat:rnorvegicus_gene_ensembl
-#' @examples biomartSpecies<-speciesConvert2Biomart("mouse")
+#' @examples #biomartSpecies<-speciesConvert2Biomart("mouse")
 #'
 speciesConvert2Biomart <- function(inputSpecies) {
   switch(inputSpecies,
@@ -70,7 +70,7 @@ speciesConvert2Biomart <- function(inputSpecies) {
 #'
 #' @param inputSpecies human, mouse, rat
 #' @return species of KEGG format, human:hsa, mouse:mmu, rat:rno
-#' @examples KEGGSpecies<-speciesKEGGConvert("mouse")
+#' @examples #KEGGSpecies<-speciesKEGGConvert("mouse")
 #'
 speciesKEGGConvert <- function(inputSpecies) {
   switch(inputSpecies,
@@ -82,7 +82,7 @@ speciesKEGGConvert <- function(inputSpecies) {
 #'
 #' @param thisKEGGSpecies species in KEGG format
 #' @return name of gene symbol
-#' @examples geneSymbol<-getGeneSymbol("mouse")
+#' @examples #geneSymbol<-getGeneSymbol("mouse")
 #'
 getGeneSymbol <- function(thisKEGGSpecies) {
     switch(thisKEGGSpecies,
@@ -98,7 +98,7 @@ getGeneSymbol <- function(thisKEGGSpecies) {
 #' human:- Homo sapiens,
 #' mouse:- Mus musculus,
 #' rat:- Rattus norvegicus
-#' @examples KEGGSpeciesFlag<-speciesKEGGFlagConvert("mouse")
+#' @examples #KEGGSpeciesFlag<-speciesKEGGFlagConvert("mouse")
 #'
 speciesKEGGFlagConvert	 <- function(inputSpecies){
   #mouse:"- Mus musculus"
@@ -120,7 +120,7 @@ speciesKEGGFlagConvert	 <- function(inputSpecies){
 #' Rat: entrezgene, rgd_symbol, ensembl_gene_id
 #' @param inputSpecies human, mouse, rat
 #' @return sample with entrez ID, symbol and ensembl ID
-#' @examples thisSampleWith3IDs<-sampleWith3IDs("sampleFile_entrezgene.csv",1,2,"entrezgene","mouse")
+#' @examples #thisSampleWith3IDs<-sampleWith3IDs("sampleFile_entrezgene.csv",1,2,"entrezgene","mouse")
 #'
 sampleWith3IDs<-function (filename,IDColumn,logFCColumn,IDType,inputSpecies){
 #inputSpecies mouse,human,rat

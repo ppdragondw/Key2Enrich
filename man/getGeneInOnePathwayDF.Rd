@@ -18,6 +18,6 @@ gene list in specific KEGG pathway
 Get gene list in specific KEGG pathway
 }
 \examples{
-library(Key2Enrich)
+#library(Key2Enrich)
 #getGeneInOnePathwayDF("mmu05160","mmu")
 }

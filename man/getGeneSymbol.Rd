@@ -16,6 +16,6 @@ name of gene symbol
 Get gene symbol from different species
 }
 \examples{
-geneSymbol<-getGeneSymbol("mouse")
+#geneSymbol<-getGeneSymbol("mouse")
 
 }

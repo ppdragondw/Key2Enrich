@@ -19,6 +19,6 @@ rat:- Rattus norvegicus
 Convert input species to KEGG species with flag
 }
 \examples{
-KEGGSpeciesFlag<-speciesKEGGFlagConvert("mouse")
+#KEGGSpeciesFlag<-speciesKEGGFlagConvert("mouse")
 
 }

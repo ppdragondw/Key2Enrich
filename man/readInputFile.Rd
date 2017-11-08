@@ -24,6 +24,6 @@ Sample file in data.frame format
 Read samples files with different annotation ID
 }
 \examples{
-entrezgene_sample<-readInputFile("sampleFile_entrezgene.csv",1,2,"entrezgene")
+#entrezgene_sample<-readInputFile("sampleFile_entrezgene.csv",1,2,"entrezgene")
 
 }

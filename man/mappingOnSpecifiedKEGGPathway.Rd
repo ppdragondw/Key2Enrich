@@ -20,5 +20,5 @@ NA
 Download KEGG pathway files and mapping genes on pathway
 }
 \examples{
-mappingOnSpecifiedKEGGPathway("mmu05160",inputSample,"mouse")
+#mappingOnSpecifiedKEGGPathway("mmu05160",inputSample,"mouse")
 }

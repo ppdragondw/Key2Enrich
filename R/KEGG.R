@@ -3,7 +3,7 @@
 #' @param KEGGSpecies species in KEGG format
 #' @return KEGG pathway ID of input species
 #' @export
-#' @examples getAllPathNameAndID("mmu")
+#' @examples #getAllPathNameAndID("mmu")
 #' @import KEGGREST
 getAllPathNameAndID<-function (KEGGSpecies){
   pathways <- keggList("pathway",KEGGSpecies)
@@ -33,7 +33,7 @@ getAllPathNameAndID<-function (KEGGSpecies){
 #' @param KEGGSpecies species in KEGG format
 #' @return all KEGG Gene ID and its entrezgene ID of input KEGG species
 #' @export
-#' @examples KEGGID2EntrezID("mmu")
+#' @examples #KEGGID2EntrezID("mmu")
 
 KEGGID2EntrezID<-function(KEGGSpecies){
   all_KEGG_GeneIDtoGeneID<-keggConv("ncbi-geneid", KEGGSpecies)
@@ -51,7 +51,7 @@ KEGGID2EntrezID<-function(KEGGSpecies){
 #' @param KEGGSpecies species in KEGG format
 #' @return all KEGG pathway name of input KEGG species
 #' @export
-#' @examples getTotalPathNames("mmu")
+#' @examples #getTotalPathNames("mmu")
 #'
 getTotalPathNames<-function (KEGGSpecies){
   pathways <- keggList("pathway",KEGGSpecies)
@@ -75,7 +75,7 @@ getTotalPathNames<-function (KEGGSpecies){
 #' n the number of sample genes with KEGG gene ID,
 #' M:the number of all genes in specific KEGG pathway,
 #' m: the number of sample genes in specific KEGG pathway
-#' @examples getPValue("mmu00053","mmu",thisInputSampleKEGG,N,n)
+#' @examples #getPValue("mmu00053","mmu",thisInputSampleKEGG,N,n)
 #'
 getPValue <- function(thispathwayID_DF,thisKEGGSpecies,thisInputSampleKEGG,N,n) {
   thisSymbol<-getGeneSymbol(thisKEGGSpecies)
@@ -127,7 +127,7 @@ getPValue <- function(thispathwayID_DF,thisKEGGSpecies,thisInputSampleKEGG,N,n) 
 #' @param KEGGSpecies species in KEGG format
 #' @return KEGG pathway ID, and its gene list in KEGG Gene ID format
 #' @export
-#' @examples getAllGeneInPathwayDF("mmu")
+#' @examples #getAllGeneInPathwayDF("mmu")
 
 getAllGeneInPathwayDF<-function(KEGGSpecies){
   allGeneInPathway<-keggLink(KEGGSpecies, "pathway")
@@ -140,7 +140,7 @@ getAllGeneInPathwayDF<-function(KEGGSpecies){
 #'
 #' @param allGeneInPathwayDF all KEGG pathway ID and its gene list in KEGG gene ID format
 #' @return N:the number of all genes with KEGG gene ID
-#' @examples getN(allGeneInPathwayDF)
+#' @examples #getN(allGeneInPathwayDF)
 #'
 getN<-function (allGeneInPathwayDF){
   N<-length(unique(allGeneInPathwayDF$KEGG_GeneID))
@@ -152,7 +152,7 @@ getN<-function (allGeneInPathwayDF){
 #' @param inputSampleKEGG input sample with in KEGG gene ID
 #' @param allGeneInPathwayDF all KEGG pathway ID and its gene list in KEGG gene ID format
 #' @return n: the number of sample genes with KEGG gene ID
-#' @examples get_n(inputSampleKEGG,allGeneInPathwayDF)
+#' @examples #get_n(inputSampleKEGG,allGeneInPathwayDF)
 #'
 get_n<-function (inputSampleKEGG,allGeneInPathwayDF){
   inputSampleKEGG_N<-merge(inputSampleKEGG,allGeneInPathwayDF,by.x="KEGG_GeneID",by.y="KEGG_GeneID")
@@ -167,7 +167,7 @@ get_n<-function (inputSampleKEGG,allGeneInPathwayDF){
 #' @param KEGGSpecies species in KEGG format
 #' @return gene list in specific KEGG pathway
 #' @examples
-#' library(Key2Enrich)
+#' #library(Key2Enrich)
 #' #getGeneInOnePathwayDF("mmu05160","mmu")
 
 getGeneInOnePathwayDF<-function(thispathID,KEGGSpecies){ #("mmu05160","mmu")
@@ -182,7 +182,7 @@ getGeneInOnePathwayDF<-function(thispathID,KEGGSpecies){ #("mmu05160","mmu")
 #' @param thisInputSampleKEGG input sample with in KEGG gene ID
 #' @param geneInOnePathwayDF gene list in specific KEGG pathway
 #' @return sample genes in specific KEGG pathway
-#' @examples get_inputSampleKEGG_m(thisInputSampleKEGG,geneInOnePathwayDF)
+#' @examples #get_inputSampleKEGG_m(thisInputSampleKEGG,geneInOnePathwayDF)
 #'
 get_inputSampleKEGG_m<-function (thisInputSampleKEGG,geneInOnePathwayDF){
   inputSampleKEGG_M<-merge(thisInputSampleKEGG,
@@ -199,7 +199,7 @@ get_inputSampleKEGG_m<-function (thisInputSampleKEGG,geneInOnePathwayDF){
 #' @param inputSampleKEGG input sample with in KEGG gene ID
 #' @param inputSpecies KEGGSpecies species in KEGG format
 #' @return NA
-#' @examples plotSigImg(filterPValueName,inputSampleKEGG,"mmu")
+#' @examples #plotSigImg(filterPValueName,inputSampleKEGG,"mmu")
 #' @import graphics
 #' @import grDevices
 #' @import utils

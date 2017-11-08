@@ -16,6 +16,6 @@ NA
 Add text stamp on image
 }
 \examples{
- textStamp(100)
+# textStamp(100)
 
 }

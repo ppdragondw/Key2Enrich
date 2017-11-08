@@ -28,6 +28,6 @@ m: the number of sample genes in specific KEGG pathway
 Calculate p-value and adjust p-value of KEGG pathway on input sample
 }
 \examples{
-getPValue("mmu00053","mmu",thisInputSampleKEGG,N,n)
+#getPValue("mmu00053","mmu",thisInputSampleKEGG,N,n)
 
 }

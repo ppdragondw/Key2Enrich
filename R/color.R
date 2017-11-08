@@ -38,8 +38,8 @@ getColor<-function (thisValue){
 #' @param thisArray color array
 #' @param thisValue log fold change value
 #' @return index
-#' @examples  thisArray<-seq(0,2,length.out = 10)
-#' @examples  getIndex(thisArray,1.6)
+#' @examples  #thisArray<-seq(0,2,length.out = 10)
+#' #getIndex(thisArray,1.6)
 
 getIndex<-function (thisArray,thisValue){
   thisIndex<-1
@@ -58,8 +58,8 @@ getIndex<-function (thisArray,thisValue){
 #' @param thisArray color array
 #' @param thisValue log fold change value
 #' @return index
-#' @examples  thisArray2<-seq(-2,0,length.out = 10)
-#' @examples  getIndex2(thisArray2,1.6)
+#' @examples # thisArray2<-seq(-2,0,length.out = 10)
+#' # getIndex2(thisArray2,1.6)
 
 getIndex2<-function (thisArray,thisValue){
   thisIndex<-10
@@ -78,7 +78,7 @@ getIndex2<-function (thisArray,thisValue){
 #' @param thisWidth the width of color key
 #' @param thisHeight the height of color key
 #' @return NA
-#' @examples  plotGradient(120,5)
+#' @examples  #plotGradient(120,5)
 #'
 plotGradient<- function (thisWidth,thisHeight){
   gradientWidth<-7
@@ -114,7 +114,7 @@ plotGradient<- function (thisWidth,thisHeight){
 #'
 #' @param thisWidth the width of text stamp
 #' @return NA
-#' @examples  textStamp(100)
+#' @examples # textStamp(100)
 #'
 textStamp<- function (thisWidth){
   text(thisWidth-136,11,"Rendered by Key2Enrich on KEGG",cex=0.3,font=2)

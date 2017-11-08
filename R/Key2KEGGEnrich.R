@@ -8,7 +8,7 @@
 #' @param filterValue must by numeric, value from 0 to 1
 #' @return data in dataframe class with pValue, adjust pValue of significate KEGG pathway
 #' @export
-#' @examples thisKEGGEnricherMatrix<-KEGGEnricherMatrixRealTime(inputSample,"mouse","fdr","fdr",0.05)
+#' @examples #thisKEGGEnricherMatrix<-KEGGEnricherMatrixRealTime(inputSample,"mouse","fdr","fdr",0.05)
 #' @importFrom stats p.adjust
 
 KEGGEnricherMatrixRealTime<-function(inputSample,
@@ -78,7 +78,7 @@ return (filterValuePathNameDF)
 #' @param imgHeight the height of export file
 #' @return data in dataframe class with pValue, adjust pValue of significate KEGG pathway
 #' @export
-#' @examples KEGGSigMx<-Key2KEGGEnrich(inputSample,"mouse","fdr","fdr",0.05,TRUE,TRUE,"KEGG",15,20)
+#' @examples #KEGGSigMx<-Key2KEGGEnrich(inputSample,"mouse","fdr","fdr",0.05,TRUE,TRUE,"KEGG",15,20)
 
 Key2KEGGEnrich<-function (inputSample,
                           inputSpecies,
@@ -107,7 +107,7 @@ Key2KEGGEnrich<-function (inputSample,
 #' @param inputSpecies human, mouse, rat
 #' @return NA
 #' @export
-#' @examples mappingOnSpecifiedKEGGPathway("mmu05160",inputSample,"mouse")
+#' @examples #mappingOnSpecifiedKEGGPathway("mmu05160",inputSample,"mouse")
 
 mappingOnSpecifiedKEGGPathway<-function (plotPathID,inputSampleKEGG,inputSpecies){
   #plotPathID:specific KEGG pathway ID

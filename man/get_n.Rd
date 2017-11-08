@@ -18,6 +18,6 @@ n: the number of sample genes with KEGG gene ID
 Get the number of sample genes with KEGG gene ID
 }
 \examples{
-get_n(inputSampleKEGG,allGeneInPathwayDF)
+#get_n(inputSampleKEGG,allGeneInPathwayDF)
 
 }

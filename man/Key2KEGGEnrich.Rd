@@ -38,5 +38,5 @@ Get matrix of enriched KEGG pathway,
 plot barplot of significantly enriched KEGG pathway, mapping genes on KEGG pathway image
 }
 \examples{
-KEGGSigMx<-Key2KEGGEnrich(inputSample,"mouse","fdr","fdr",0.05,TRUE,TRUE,"KEGG",15,20)
+#KEGGSigMx<-Key2KEGGEnrich(inputSample,"mouse","fdr","fdr",0.05,TRUE,TRUE,"KEGG",15,20)
 }
