@@ -17,5 +17,4 @@ Read XML file
 }
 \examples{
 parseKGMLFile("mmu05321.xml")
-
 }

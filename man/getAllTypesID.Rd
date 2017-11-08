@@ -9,9 +9,11 @@ getAllTypesID(inputSpecies, inputIDType, geneIDCol)
 \arguments{
 \item{inputSpecies}{human, mouse, rat}
 
-\item{geneIDCol}{the input ID}
+\item{inputIDType}{Human: entrezgene, hgnc_symbol, ensembl_gene_id,
+Mouse: entrezgene, mgi_symbol, ensembl_gene_id,
+Rat: entrezgene, rgd_symbol, ensembl_gene_id}
 
-\item{IDType}{Human: entrezgene, hgnc_symbol, ensembl_gene_id, Mouse: entrezgene, mgi_symbol, ensembl_gene_id, Rat: entrezgene, rgd_symbol, ensembl_gene_id}
+\item{geneIDCol}{the input ID}
 }
 \value{
 input sample in dataframe class with entrez ID, symbol and ensembl ID
@@ -20,5 +22,5 @@ input sample in dataframe class with entrez ID, symbol and ensembl ID
 Convert input file ID to dataframe class with entrez ID, symbol and ensembl ID
 }
 \examples{
-getAllTypesID("mouse","entrezgene",geneIDCol)
+#getAllTypesID("mouse","entrezgene",geneIDCol)
 }

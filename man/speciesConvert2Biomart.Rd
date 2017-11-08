@@ -10,7 +10,10 @@ speciesConvert2Biomart(inputSpecies)
 \item{inputSpecies}{human, mouse, rat}
 }
 \value{
-species of biomart format, human:hsapiens_gene_ensembl, mouse:mmusculus_gene_ensembl, rat:rnorvegicus_gene_ensembl
+species of biomart format,
+human:hsapiens_gene_ensembl,
+mouse:mmusculus_gene_ensembl,
+rat:rnorvegicus_gene_ensembl
 }
 \description{
 Convert input species to biomart species

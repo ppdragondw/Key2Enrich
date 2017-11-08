@@ -4,7 +4,7 @@
 #' @return KEGG pathway ID of input species
 #' @export
 #' @examples getAllPathNameAndID("mmu")
-#'
+#' @import KEGGREST
 getAllPathNameAndID<-function (KEGGSpecies){
   pathways <- keggList("pathway",KEGGSpecies)
   pathways<-as.data.frame(pathways)
@@ -17,7 +17,8 @@ getAllPathNameAndID<-function (KEGGSpecies){
   pathways<-data.frame(pathways,do.call(rbind, splitCol1))
 
   #splitCol2<-strsplit(as.character(pathways$pathName),"- Mus musculus",fixed=TRUE).
-  splitCol2<-strsplit(as.character(pathways$pathName),speciesKEGGFlagConvert(KEGGSpecies),fixed=TRUE)
+  splitCol2<-strsplit(as.character(pathways$pathName),
+                      speciesKEGGFlagConvert(KEGGSpecies),fixed=TRUE)
 
   pathways<-data.frame(pathways,do.call(rbind, splitCol2))
 
@@ -33,7 +34,7 @@ getAllPathNameAndID<-function (KEGGSpecies){
 #' @return all KEGG Gene ID and its entrezgene ID of input KEGG species
 #' @export
 #' @examples KEGGID2EntrezID("mmu")
-#'
+
 KEGGID2EntrezID<-function(KEGGSpecies){
   all_KEGG_GeneIDtoGeneID<-keggConv("ncbi-geneid", KEGGSpecies)
   all_KEGG_GeneIDtoGeneIDDF<-data.frame(names(all_KEGG_GeneIDtoGeneID),all_KEGG_GeneIDtoGeneID)
@@ -69,15 +70,18 @@ getTotalPathNames<-function (KEGGSpecies){
 #' @param thisInputSampleKEGG input sample with in KEGG gene ID
 #' @param N the number of all genes with KEGG gene ID
 #' @param n the number of sample genes with KEGG gene ID
-#' @return vector in dataframe class containing p-value, adjust p-value, N:the number of all genes with KEGG gene ID, n the number of sample genes with KEGG gene ID, M:the number of all genes in specific KEGG pathway, m: the number of sample genes in specific KEGG pathway
-#' @export
+#' @return vector in dataframe class containing p-value, adjust p-value,
+#' N:the number of all genes with KEGG gene ID,
+#' n the number of sample genes with KEGG gene ID,
+#' M:the number of all genes in specific KEGG pathway,
+#' m: the number of sample genes in specific KEGG pathway
 #' @examples getPValue("mmu00053","mmu",thisInputSampleKEGG,N,n)
 #'
 getPValue <- function(thispathwayID_DF,thisKEGGSpecies,thisInputSampleKEGG,N,n) {
   thisSymbol<-getGeneSymbol(thisKEGGSpecies)
   #print (paste("Working on ",thispathwayID_DF[1],sep=""))
   #cat("\nCaculate M\n")
-  geneInOnePathway<-keggLink(thisKEGGSpecies,thispathwayID_DF[1]) #keggLink("mmu","mmu05140")
+  geneInOnePathway<- keggLink(thisKEGGSpecies,thispathwayID_DF[1]) #keggLink("mmu","mmu05140")
   geneInOnePathwayDF<-data.frame(names(geneInOnePathway),geneInOnePathway)
   colnames(geneInOnePathwayDF)<-c("pathwayID","KEGG_GeneID")
   #M
@@ -85,7 +89,10 @@ getPValue <- function(thispathwayID_DF,thisKEGGSpecies,thisInputSampleKEGG,N,n) 
   #print (M)
 
   #cat("Caculate m\n")
-  inputSampleKEGG_M<-merge(thisInputSampleKEGG,geneInOnePathwayDF,by.x="KEGG_GeneID",by.y="KEGG_GeneID")
+  inputSampleKEGG_M<-merge(thisInputSampleKEGG,
+                           geneInOnePathwayDF,
+                           by.x="KEGG_GeneID",
+                           by.y="KEGG_GeneID")
   inputSampleKEGG_m<-unique(inputSampleKEGG_M$KEGG_GeneID)
   m<-length(inputSampleKEGG_m)
   #print (m)
@@ -97,7 +104,7 @@ getPValue <- function(thispathwayID_DF,thisKEGGSpecies,thisInputSampleKEGG,N,n) 
   #print (n)
 
   #cat("Caculate p value\n")
-  p.value <- phyper(q=m-1, m=M, n=(N-M), k=n, lower.tail=FALSE)
+  p.value <-  stats::phyper(q=m-1, m=M, n=(N-M), k=n, lower.tail=FALSE)
   #print (p.value)
   #print("###################################################")
 
@@ -121,7 +128,7 @@ getPValue <- function(thispathwayID_DF,thisKEGGSpecies,thisInputSampleKEGG,N,n) 
 #' @return KEGG pathway ID, and its gene list in KEGG Gene ID format
 #' @export
 #' @examples getAllGeneInPathwayDF("mmu")
-#'
+
 getAllGeneInPathwayDF<-function(KEGGSpecies){
   allGeneInPathway<-keggLink(KEGGSpecies, "pathway")
   allGeneInPathwayDF<-data.frame(names(allGeneInPathway),allGeneInPathway)
@@ -159,8 +166,10 @@ get_n<-function (inputSampleKEGG,allGeneInPathwayDF){
 #' @param thispathID KEGG pathway ID
 #' @param KEGGSpecies species in KEGG format
 #' @return gene list in specific KEGG pathway
-#' @examples getGeneInOnePathwayDF("mmu05160","mmu")
-#'
+#' @examples
+#' library(Key2Enrich)
+#' #getGeneInOnePathwayDF("mmu05160","mmu")
+
 getGeneInOnePathwayDF<-function(thispathID,KEGGSpecies){ #("mmu05160","mmu")
   geneInOnePathway<-keggLink(KEGGSpecies,thispathID) #keggLink("mmu","mmu05160")
   geneInOnePathwayDF<-data.frame(names(geneInOnePathway),geneInOnePathway)
@@ -170,13 +179,16 @@ getGeneInOnePathwayDF<-function(thispathID,KEGGSpecies){ #("mmu05160","mmu")
 
 #' Get sample genes in specific KEGG pathway
 #'
-#' @param inputSampleKEGG input sample with in KEGG gene ID
-#' @param allGeneInPathwayDF gene list in specific KEGG pathway
+#' @param thisInputSampleKEGG input sample with in KEGG gene ID
+#' @param geneInOnePathwayDF gene list in specific KEGG pathway
 #' @return sample genes in specific KEGG pathway
 #' @examples get_inputSampleKEGG_m(thisInputSampleKEGG,geneInOnePathwayDF)
 #'
 get_inputSampleKEGG_m<-function (thisInputSampleKEGG,geneInOnePathwayDF){
-  inputSampleKEGG_M<-merge(thisInputSampleKEGG,geneInOnePathwayDF,by.x="KEGG_GeneID",by.y="KEGG_GeneID")
+  inputSampleKEGG_M<-merge(thisInputSampleKEGG,
+                           geneInOnePathwayDF,
+                           by.x="KEGG_GeneID",
+                           by.y="KEGG_GeneID")
   inputSampleKEGG_m<-unique(inputSampleKEGG_M$KEGG_GeneID)
   return (inputSampleKEGG_M[inputSampleKEGG_M$KEGG_GeneID %in% inputSampleKEGG_m,])
 }
@@ -188,7 +200,11 @@ get_inputSampleKEGG_m<-function (thisInputSampleKEGG,geneInOnePathwayDF){
 #' @param inputSpecies KEGGSpecies species in KEGG format
 #' @return NA
 #' @examples plotSigImg(filterPValueName,inputSampleKEGG,"mmu")
-#'
+#' @import graphics
+#' @import grDevices
+#' @import utils
+#' @import png
+
 plotSigImg<-function(filterPValueName,inputSampleKEGG,inputSpecies){
 
   plotPathID<-as.character(filterPValueName[1])
@@ -206,7 +222,11 @@ plotSigImg<-function(filterPValueName,inputSampleKEGG,inputSpecies){
 
   r<-parseKGMLFile(KGMLName)
   kegg.nodes <- lapply(r[childIsEntry(r)], parseEntry)
-  nodeDF<-data.frame(KEGG_GeneID="NA",type=NA,link=NA,graphicName=NA,graphicType=NA,graphicX=NA,graphicY=NA,graphicWidth=NA,graphicHeight=NA)
+  nodeDF<-data.frame(KEGG_GeneID="NA",type=NA,
+                     link=NA,graphicName=NA,
+                     graphicType=NA,graphicX=NA,
+                     graphicY=NA,graphicWidth=NA,
+                     graphicHeight=NA)
   nodeDF<-parseList2Dataframe(kegg.nodes,nodeDF)
 
   img <- readPNG(imgName)
@@ -254,7 +274,11 @@ plotSigImg<-function(filterPValueName,inputSampleKEGG,inputSpecies){
 
     plotArea[plotArea=="#BFFFBF"]<-getColor(as.numeric(thisLogFC))
 
-    rasterImage(plotArea, geneX-0.5*geneWidth, height-geneY-0.5*geneHeight, geneX-0.5*geneWidth+geneWidth, height-geneY-0.5*geneHeight+geneHeight,interpolate=FALSE)
+    rasterImage(plotArea, geneX-0.5*geneWidth,
+                height-geneY-0.5*geneHeight,
+                geneX-0.5*geneWidth+geneWidth,
+                height-geneY-0.5*geneHeight+geneHeight,
+                interpolate=FALSE)
     }
   }
   plotGradient(width,height)

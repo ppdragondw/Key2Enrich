@@ -10,7 +10,10 @@ speciesKEGGFlagConvert(inputSpecies)
 \item{inputSpecies}{human, mouse, rat}
 }
 \value{
-species of KEGG format with flag, human:- Homo sapiens, mouse:- Mus musculus, rat:- Rattus norvegicus
+species of KEGG format with flag,
+human:- Homo sapiens,
+mouse:- Mus musculus,
+rat:- Rattus norvegicus
 }
 \description{
 Convert input species to KEGG species with flag

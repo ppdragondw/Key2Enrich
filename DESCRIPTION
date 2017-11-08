@@ -1,6 +1,6 @@
 Package: Key2Enrich
 Type: Package
-Title: Gene/Protein dataset enrichment
+Title: Gene set enrichment analysis R package
 Version: 0.99.0
 Author: Dong Wang
 Maintainer: Dong Wang <dong.2.wang@ucdenver.edu>
@@ -10,22 +10,23 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
 Depends:
-    biomaRt,
-    KEGGREST,   
-    png,    
-    XML,
+    KEGGREST,
+    biomaRt    
+Imports:
+    clusterProfiler,
+    ReactomePA,
+    DOSE,
+    org.Rn.eg.db,
+    org.Hs.eg.db (>= 3.4.0),
+    org.Mm.eg.db,
     ggplot2,
     grid,
     colorspace,
     gtable,
-    clusterProfiler,
-    ReactomePA,
-    DOSE
-Import:
-    org.Rn.eg.db,
-    org.Hs.eg.db,
-    org.Mm.eg.db,
-Suggests: 
+    png,
+    XML
+Suggests:
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr

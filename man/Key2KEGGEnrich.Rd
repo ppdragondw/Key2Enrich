@@ -2,17 +2,19 @@
 % Please edit documentation in R/Key2KEGGEnrich.R
 \name{Key2KEGGEnrich}
 \alias{Key2KEGGEnrich}
-\title{Get matrix of enriched KEGG pathway, plot barplot of significantly enriched KEGG pathway, mapping genes on KEGG pathway image}
+\title{Get matrix of enriched KEGG pathway,
+plot barplot of significantly enriched KEGG pathway, mapping genes on KEGG pathway image}
 \usage{
-Key2KEGGEnrich(inputSampleKEGG, inputSpecies, adjustMethod, filterMethod,
+Key2KEGGEnrich(inputSample, inputSpecies, adjustMethod, filterMethod,
   filterValue, ifbarplot, ifMapOnPath, type, imgWidth, imgHeight)
 }
 \arguments{
-\item{inputSampleKEGG}{input formatted sample}
+\item{inputSample}{input formatted sample}
 
 \item{inputSpecies}{human, mouse, rat}
 
-\item{adjustMethod}{p.adjust.methods, c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")}
+\item{adjustMethod}{p.adjust.methods,
+c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")}
 
 \item{filterMethod}{pValue or other character vector}
 
@@ -27,15 +29,14 @@ Key2KEGGEnrich(inputSampleKEGG, inputSpecies, adjustMethod, filterMethod,
 \item{imgWidth}{the width of export file}
 
 \item{imgHeight}{the height of export file}
-
-\item{mapping}{gene on pathway or not, TRUE/FALSE}
 }
 \value{
 data in dataframe class with pValue, adjust pValue of significate KEGG pathway
 }
 \description{
-Get matrix of enriched KEGG pathway, plot barplot of significantly enriched KEGG pathway, mapping genes on KEGG pathway image
+Get matrix of enriched KEGG pathway,
+plot barplot of significantly enriched KEGG pathway, mapping genes on KEGG pathway image
 }
 \examples{
-KEGGSigMx<-Key2KEGGEnrich(inputSampleKEGG,"mouse","fdr","fdr",0.05,TRUE,TRUE,"KEGG",15,20)
+KEGGSigMx<-Key2KEGGEnrich(inputSample,"mouse","fdr","fdr",0.05,TRUE,TRUE,"KEGG",15,20)
 }

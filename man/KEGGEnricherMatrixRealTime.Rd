@@ -4,15 +4,16 @@
 \alias{KEGGEnricherMatrixRealTime}
 \title{Get enrichment matrix of enriched KEGG pathway}
 \usage{
-KEGGEnricherMatrixRealTime(inputSampleKEGG, inputSpecies, adjustMethod,
+KEGGEnricherMatrixRealTime(inputSample, inputSpecies, adjustMethod,
   filterMethod, filterValue)
 }
 \arguments{
-\item{inputSampleKEGG}{input formatted sample}
+\item{inputSample}{input formatted sample}
 
 \item{inputSpecies}{human, mouse, rat}
 
-\item{adjustMethod}{p.adjust.methods, c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")}
+\item{adjustMethod}{p.adjust.methods,
+c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")}
 
 \item{filterMethod}{pValue or other character vector}
 

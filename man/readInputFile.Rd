@@ -11,7 +11,11 @@ readInputFile(fileName, IDColumn, logFCColumn, IDType)
 
 \item{IDColumn}{must be numberic,the column number of sample ID}
 
-\item{IDType}{Human: entrezgene, hgnc_symbol, ensembl_gene_id, Mouse: entrezgene, mgi_symbol, ensembl_gene_id, Rat: entrezgene, rgd_symbol, ensembl_gene_id}
+\item{logFCColumn}{must be numberic,the column number of sample log fold change}
+
+\item{IDType}{Human: entrezgene, hgnc_symbol, ensembl_gene_id,
+Mouse: entrezgene, mgi_symbol, ensembl_gene_id,
+Rat: entrezgene, rgd_symbol, ensembl_gene_id}
 }
 \value{
 Sample file in data.frame format

@@ -2,16 +2,17 @@
 #'
 #' @param thisValue log fold change value of input
 #' @return color for node
-#' @examples getColor(1.6)
+#' @examples #getColor(1.6)
+#' @importFrom grDevices colorRampPalette
 
 getColor<-function (thisValue){
   thisCOlor<-"#BEBEBE"
   thisArray<-seq(0,2,length.out = 10)
-  colfunc <- colorRampPalette(c("white", "red"))
+  colfunc <- grDevices::colorRampPalette(c("white", "red"))
   colArray<-colfunc(10)
 
   thisArray2<-seq(-2,0,length.out = 10)
-  colfunc2 <- colorRampPalette(c("blueviolet", "white"))
+  colfunc2 <- grDevices::colorRampPalette(c("blueviolet", "white"))
   colArray2<-colfunc2(10)
 
   if (thisValue>=2) {
@@ -91,8 +92,19 @@ plotGradient<- function (thisWidth,thisHeight){
   colfunc2 <- colorRampPalette(c("blueviolet", "white"))
   colArray2<-colfunc2(10)
   for (i in 10:1){
-  rect(thisWidth-y-gradientWidth*i,thisHeight-x-gradientHeight,thisWidth-y-(i-1),thisHeight-x,col=colArray[11-i],border = "black",lwd=0.2)
-  rect(thisWidth-y-gradientWidth*i-gradientWidth*10,thisHeight-x-gradientHeight,thisWidth-y-(i-1)-gradientWidth*10,thisHeight-x,col=colArray2[11-i],border = "black",lwd=0.2)
+  rect(thisWidth-y-gradientWidth*i,
+       thisHeight-x-gradientHeight,
+       thisWidth-y-(i-1),
+       thisHeight-x,
+       col=colArray[11-i],
+       border = "black",
+       lwd=0.2)
+  rect(thisWidth-y-gradientWidth*i-gradientWidth*10,
+       thisHeight-x-gradientHeight,
+       thisWidth-y-(i-1)-gradientWidth*10,
+       thisHeight-x,
+       col=colArray2[11-i],
+       border = "black",lwd=0.2)
   }
   text(thisWidth-y,thisHeight-x-gradientHeight-5,"1",cex=0.2)
   text(thisWidth-y-gradientWidth*20,thisHeight-x-gradientHeight-5,"-1",cex=0.2)

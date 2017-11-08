@@ -7,7 +7,7 @@
 parseGraphic(thisGeneKEGGID)
 }
 \arguments{
-\item{r}{xmlRoot}
+\item{thisGeneKEGGID}{gene KEGG ID}
 }
 \value{
 character vector with name,type, X of graphic,Y of graphic,width of graphic,height of graphic

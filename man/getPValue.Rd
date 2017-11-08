@@ -18,7 +18,11 @@ getPValue(thispathwayID_DF, thisKEGGSpecies, thisInputSampleKEGG, N, n)
 \item{n}{the number of sample genes with KEGG gene ID}
 }
 \value{
-vector in dataframe class containing p-value, adjust p-value, N:the number of all genes with KEGG gene ID, n the number of sample genes with KEGG gene ID, M:the number of all genes in specific KEGG pathway, m: the number of sample genes in specific KEGG pathway
+vector in dataframe class containing p-value, adjust p-value,
+N:the number of all genes with KEGG gene ID,
+n the number of sample genes with KEGG gene ID,
+M:the number of all genes in specific KEGG pathway,
+m: the number of sample genes in specific KEGG pathway
 }
 \description{
 Calculate p-value and adjust p-value of KEGG pathway on input sample

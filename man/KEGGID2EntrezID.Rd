@@ -17,5 +17,4 @@ Get all KEGG gene ID and entrezgene ID in a specific species
 }
 \examples{
 KEGGID2EntrezID("mmu")
-
 }

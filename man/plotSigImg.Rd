@@ -21,5 +21,4 @@ Plot heat map rectangle on the KEGG pathway node
 }
 \examples{
 plotSigImg(filterPValueName,inputSampleKEGG,"mmu")
-
 }

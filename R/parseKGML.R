@@ -4,11 +4,12 @@
 #' @return xmlRoot of file
 #' @export
 #' @examples parseKGMLFile("mmu05321.xml")
-#'
+#' @importFrom XML xmlTreeParse xmlAttrs xmlChildren xmlRoot xmlName xmlErrorCumulator
+
 parseKGMLFile <- function(file) {
     tryCatch(
-        doc <- xmlTreeParse(file, getDTD=FALSE,
-                            error=xmlErrorCumulator(immediate=FALSE)),
+        doc <-  xmlTreeParse(file, getDTD=FALSE,
+                            error=XML::xmlErrorCumulator(immediate=FALSE)),
         error = function(e) {
             fileSize <- file.info(file)$size[1]
             bytes <- sprintf("%d byte%s",
@@ -48,7 +49,12 @@ parseKGMLFile <- function(file) {
   pathTitle <- attrs[["title"]]
   pathImage <-   attrs[["image"]]
   pathLnk <-    attrs[["link"]]
-  return (data.frame(pathName=pathName,pathOrg=pathOrg,pathNumber=pathNumber,pathTitle=pathTitle,pathImage=pathImage,pathLnk=pathLnk))
+  return (data.frame(pathName=pathName,
+                     pathOrg=pathOrg,
+                     pathNumber=pathNumber,
+                     pathTitle=pathTitle,
+                     pathImage=pathImage,
+                     pathLnk=pathLnk))
   }
 
   childIsEntry<-function(r){
@@ -77,7 +83,10 @@ parseKGMLFile <- function(file) {
   graphicWidth<-unname(graphicsAttrs["width"])
   graphicHeight<-unname(graphicsAttrs["height"])
 
-  return (list(entryID=entryID,name=name,type=type,link=link,
+  return (list(entryID=entryID,
+               name=name,
+               type=type,
+               link=link,
   graphicName=graphicName,
   graphicType=graphicType,
   graphicX=graphicX,
@@ -88,7 +97,7 @@ parseKGMLFile <- function(file) {
 
   #' Get info from list class of graphic info
   #'
-  #' @param r xmlRoot
+  #' @param thisGeneKEGGID gene KEGG ID
   #' @return character vector with name,type, X of graphic,Y of graphic,width of graphic,height of graphic
   #' @export
   #' @examples parseGraphic(thisGeneKEGGID)

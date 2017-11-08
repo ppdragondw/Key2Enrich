@@ -16,5 +16,5 @@ color for node
 Get color for node from log fold change value
 }
 \examples{
-getColor(1.6)
+#getColor(1.6)
 }

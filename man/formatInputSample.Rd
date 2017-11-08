@@ -13,7 +13,9 @@ formatInputSample(filename, IDColumn, logFCColumn, IDType, inputSpecies)
 
 \item{logFCColumn}{must be numberic,the column number of sample log fold change}
 
-\item{IDType}{Human: entrezgene, hgnc_symbol, ensembl_gene_id, Mouse: entrezgene, mgi_symbol, ensembl_gene_id, Rat: entrezgene, rgd_symbol, ensembl_gene_id}
+\item{IDType}{Human: entrezgene, hgnc_symbol, ensembl_gene_id,
+Mouse: entrezgene, mgi_symbol, ensembl_gene_id,
+Rat: entrezgene, rgd_symbol, ensembl_gene_id}
 
 \item{inputSpecies}{human, mouse, rat}
 }
@@ -24,5 +26,5 @@ input sample in dataframe class with entrez ID, symbol and ensembl ID
 Format input file to dataframe class with entrez ID, symbol and ensembl ID
 }
 \examples{
-inputSample<-formatInputSample("sampleFile_entrezgene.csv",1,2,"entrezgene","mouse")
+#inputSample<-formatInputSample("./inst/extdata/sampleFile.csv",1,2,"entrezgene","mouse")
 }

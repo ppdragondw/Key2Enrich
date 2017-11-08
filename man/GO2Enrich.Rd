@@ -12,7 +12,8 @@ GO2Enrich(inputSample, inputSpecies, adjustMethod, filterValue, GOType,
 
 \item{inputSpecies}{human, mouse, rat}
 
-\item{adjustMethod}{p.adjust.methods, c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")}
+\item{adjustMethod}{p.adjust.methods,
+c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")}
 
 \item{filterValue}{must by numeric, value from 0 to 1}
 
@@ -29,5 +30,11 @@ data in dataframe class with pValue, adjust pValue of significate Gene Ontology
 Perform Gene Ontology enrichment analysis
 }
 \examples{
-egoDF<-GO2Enrich(inputSample,"mouse","fdr",0.05,"BP",15,20)
+egoDF<-GO2Enrich(inputSample=inputSample,
+inputSpecies="mouse",
+adjustMethod="fdr",
+filterValue=0.05,
+GOType="BP",
+imgWidth=15,
+imgHeight=20)
 }

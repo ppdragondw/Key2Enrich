@@ -17,5 +17,4 @@ Get all KEGG pathway name and ID of species
 }
 \examples{
 getAllPathNameAndID("mmu")
-
 }

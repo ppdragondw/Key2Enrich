@@ -5,8 +5,13 @@
 #' @param imgWidth the width of export file
 #' @param imgHeight the height of export file
 #' @return data in dataframe class with pValue, adjust pValue
-#' @export
-#' @examples thisKEGGBarplot<-Key2EnrichBarplot(filterValuePathNameDF,"KEGG",15,20)
+#' @examples
+#' reactomePValueMatrix<-Reactome2Enrich(inputSample,"mouse","fdr",0.05,15,20)
+#' @import ggplot2
+#' @importFrom grDevices pdf
+#' @import org.Hs.eg.db
+#' @import org.Mm.eg.db
+#' @import org.Rn.eg.db
 
 Key2EnrichBarplot<-function (filterValuePathNameDF,type,imgWidth,imgHeight)
 {
@@ -35,7 +40,8 @@ Key2EnrichBarplot<-function (filterValuePathNameDF,type,imgWidth,imgHeight)
 
   pdf(file=fileName,width=imgWidth,height=imgHeight)
 
-    filterValuePathNameDF$ratio<- as.numeric(as.character( filterValuePathNameDF$m ))/as.numeric(as.character( filterValuePathNameDF$M))
+    filterValuePathNameDF$ratio<-
+      as.numeric(as.character( filterValuePathNameDF$m ))/as.numeric(as.character( filterValuePathNameDF$M))
 
     p1<-ggplot(data= filterValuePathNameDF, aes(x=pathName, y=negativeLog)) +
       geom_bar(stat="identity",color=thisColor, fill=thisColor,width=0.5)+
@@ -65,6 +71,8 @@ Key2EnrichBarplot<-function (filterValuePathNameDF,type,imgWidth,imgHeight)
 #' @param p2 ggplot
 #' @return plot
 #' @examples multiplot(p1,p2)
+#' @import grid
+#' @import gtable
 
 multiplot <- function(p1,p2) {
   grid.newpage()

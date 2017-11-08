@@ -7,9 +7,9 @@
 get_inputSampleKEGG_m(thisInputSampleKEGG, geneInOnePathwayDF)
 }
 \arguments{
-\item{inputSampleKEGG}{input sample with in KEGG gene ID}
+\item{thisInputSampleKEGG}{input sample with in KEGG gene ID}
 
-\item{allGeneInPathwayDF}{gene list in specific KEGG pathway}
+\item{geneInOnePathwayDF}{gene list in specific KEGG pathway}
 }
 \value{
 sample genes in specific KEGG pathway

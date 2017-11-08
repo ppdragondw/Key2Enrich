@@ -7,15 +7,17 @@
 sampleWith3IDs(filename, IDColumn, logFCColumn, IDType, inputSpecies)
 }
 \arguments{
+\item{filename}{input file in csv format}
+
 \item{IDColumn}{must be numberic,the column number of sample ID}
 
 \item{logFCColumn}{must be numberic,the column number of sample log fold change}
 
-\item{IDType}{Human: entrezgene, hgnc_symbol, ensembl_gene_id, Mouse: entrezgene, mgi_symbol, ensembl_gene_id, Rat: entrezgene, rgd_symbol, ensembl_gene_id}
+\item{IDType}{Human: entrezgene, hgnc_symbol, ensembl_gene_id,
+Mouse: entrezgene, mgi_symbol, ensembl_gene_id,
+Rat: entrezgene, rgd_symbol, ensembl_gene_id}
 
 \item{inputSpecies}{human, mouse, rat}
-
-\item{fileName}{input file in csv format}
 }
 \value{
 sample with entrez ID, symbol and ensembl ID

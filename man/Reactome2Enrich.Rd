@@ -12,7 +12,8 @@ Reactome2Enrich(inputSample, inputSpecies, adjustMethod, filterValue, imgWidth,
 
 \item{inputSpecies}{human, mouse, rat}
 
-\item{adjustMethod}{p.adjust.methods, c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")}
+\item{adjustMethod}{p.adjust.methods,
+c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")}
 
 \item{filterValue}{must by numeric, value from 0 to 1}
 

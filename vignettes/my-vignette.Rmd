@@ -15,14 +15,16 @@ Enrichment analysis is a popular method for analyzing gene sets generated from t
 
 ## Get started
 
-Read sample from file, the input file should in csv format. Each line of the file is a data record. Each record consists of one or more fields, separated by commas. The data from Affymetrix microarray of western diet feed mouse (WD) vs. low fat diet feed mouse (LF) were used as an example. 748 differential expressed genes were identified with cutoff FDR<0.05 using limma R package. 
+```{r, include=FALSE}
+devtools::load_all()
+```
+
+Load sample data from packages, the input file should in csv format. Each line of the file is a data record. Each record consists of one or more fields, separated by commas. The data from Affymetrix microarray of western diet feed mouse (WD) vs. low fat diet feed mouse (LF) were used as an example. 748 differential expressed genes were identified with cutoff FDR<0.05 using limma R package. 
 ```{r echo=TRUE, fig.show='hold', message=FALSE, warning=FALSE}
-  devtools::load_all()
-# Read file and add gene symbol, entrez and ensembol IDs
- inputSample<-formatInputSample("../data-raw/sampleMgisymbol.csv", 
-                                IDColumn =  1,logFCColumn= 2,
-                                IDType="mgi_symbol", inputSpecies = "mouse")
- head(inputSample)
+# Load sample data.
+data(inputSample)
+inputSample<-as.data.frame(inputSample)
+head(inputSample)
 ```
 
 KEGG pathway enrichment analysis, this step will take some time, the data is getting from KEGG database by using KEGG API.
