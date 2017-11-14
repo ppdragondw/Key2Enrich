@@ -3,7 +3,11 @@
 #' @param file file name
 #' @return xmlRoot of file
 #' @export
-#' @examples #parseKGMLFile("mmu05321.xml")
+#' @examples
+#' path<-system.file(package = "Key2Enrich")
+#' xmlPath<-paste(path,"/extdata",sep="")
+#' xmlFile<-paste(xmlPath,sep="","/hsa04012.xml")
+#' parseKGMLFile(xmlFile)
 #' @importFrom XML xmlTreeParse xmlAttrs xmlChildren xmlRoot xmlName xmlErrorCumulator
 
 parseKGMLFile <- function(file) {
@@ -25,7 +29,7 @@ parseKGMLFile <- function(file) {
             msg <- paste(msg,
                          "\nDetailed error messages from",
                          "XML::xmlTreeParse:\n", sep="")
-            cat(msg)
+           cat(msg)
            stop(e)
         })
   r <- xmlRoot(doc)

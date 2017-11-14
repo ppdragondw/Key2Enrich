@@ -30,7 +30,11 @@ data in dataframe class with pValue, adjust pValue of significate Gene Ontology
 Perform Gene Ontology enrichment analysis
 }
 \examples{
-#egoDF<-GO2Enrich(inputSample=inputSample,inputSpecies="mouse",
-#                 adjustMethod="fdr",filterValue=0.05,GOType="BP",
-#                 imgWidth=15,imgHeight=20)
+library(Key2Enrich)
+data(inputSample)
+inputSample<-as.data.frame(inputSample)
+head(inputSample)
+egoDF<-GO2Enrich(inputSample=inputSample,inputSpecies="mouse",
+                 adjustMethod="fdr",filterValue=0.05,GOType="BP",
+                 imgWidth=15,imgHeight=20)
 }

@@ -16,5 +16,8 @@ xmlRoot of file
 Read XML file
 }
 \examples{
-#parseKGMLFile("mmu05321.xml")
+path<-system.file(package = "Key2Enrich")
+xmlPath<-paste(path,"/extdata",sep="")
+xmlFile<-paste(xmlPath,sep="","/hsa04012.xml")
+parseKGMLFile(xmlFile)
 }
