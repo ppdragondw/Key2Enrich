@@ -30,6 +30,7 @@ data in dataframe class with pValue, adjust pValue of significate Gene Ontology
 Perform Gene Ontology enrichment analysis
 }
 \examples{
+
 library(Key2Enrich)
 data(inputSample)
 inputSample<-as.data.frame(inputSample)

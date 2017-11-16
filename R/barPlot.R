@@ -5,13 +5,16 @@
 #' @param imgWidth the width of export file
 #' @param imgHeight the height of export file
 #' @return data in dataframe class with pValue, adjust pValue
-#' @examples
-#' #reactomePValueMatrix<-Reactome2Enrich(inputSample,"mouse","fdr",0.05,15,20)
 #' @import ggplot2
 #' @importFrom grDevices pdf
-#' @import org.Hs.eg.db
-#' @import org.Mm.eg.db
-#' @import org.Rn.eg.db
+#' @import org.Hs.eg.db org.Mm.eg.db org.Rn.eg.db
+#' @export
+#' @examples
+#' library(Key2Enrich)
+#' data(inputSample)
+#' inputSample<-as.data.frame(inputSample)
+#' thisKEGGEnricherMatrix<-KEGGEnricherMatrixRealTime(inputSample,"mouse","fdr","fdr",0.05)
+#' Key2EnrichBarplot(thisKEGGEnricherMatrix,"KEGG",15,20)
 
 Key2EnrichBarplot<-function (filterValuePathNameDF,type,imgWidth,imgHeight)
 {
@@ -73,9 +76,7 @@ Key2EnrichBarplot<-function (filterValuePathNameDF,type,imgWidth,imgHeight)
 #' @param p1 ggplot
 #' @param p2 ggplot
 #' @return plot
-#' @examples #multiplot(p1,p2)
-#' @import grid
-#' @import gtable
+#' @import grid gtable
 
 multiplot <- function(p1,p2) {
   grid.newpage()

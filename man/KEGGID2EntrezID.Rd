@@ -16,5 +16,6 @@ all KEGG Gene ID and its entrezgene ID of input KEGG species
 Get all KEGG gene ID and entrezgene ID in a specific species
 }
 \examples{
-#KEGGID2EntrezID("mmu")
+library(Key2Enrich)
+KEGGID2EntrezID("mmu")
 }

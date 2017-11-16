@@ -21,6 +21,3 @@ input sample in dataframe class with entrez ID, symbol and ensembl ID
 \description{
 Convert input file ID to dataframe class with entrez ID, symbol and ensembl ID
 }
-\examples{
-#getAllTypesID("mouse","entrezgene",geneIDCol)
-}

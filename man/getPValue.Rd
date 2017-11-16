@@ -28,6 +28,11 @@ m: the number of sample genes in specific KEGG pathway
 Calculate p-value and adjust p-value of KEGG pathway on input sample
 }
 \examples{
-#getPValue("mmu00053","mmu",thisInputSampleKEGG,N,n)
-
+library(Key2Enrich)
+data(inputSample)
+inputSample<-as.data.frame(inputSample)
+allGeneInPathwayDF<-getAllGeneInPathwayDF("mmu")
+N<-getN(allGeneInPathwayDF)
+n<-get_n(inputSample,allGeneInPathwayDF)
+getPValue("mmu00053","mmu",inputSample,N,n)
 }

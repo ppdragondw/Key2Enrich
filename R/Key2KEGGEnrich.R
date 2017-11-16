@@ -1,4 +1,4 @@
-#' Get enrichment matrix of enriched KEGG pathway
+#' Get enrichment output matrix of enriched KEGG pathway
 #'
 #' @param inputSample input formatted sample
 #' @param inputSpecies human, mouse, rat
@@ -8,7 +8,12 @@
 #' @param filterValue must by numeric, value from 0 to 1
 #' @return data in dataframe class with pValue, adjust pValue of significate KEGG pathway
 #' @export
-#' @examples #thisKEGGEnricherMatrix<-KEGGEnricherMatrixRealTime(inputSample,"mouse","fdr","fdr",0.05)
+#' @examples
+#' data(inputSample)
+#' inputSample<-as.data.frame(inputSample)
+#' \dontrun{
+#' thisKEGGEnricherMatrix<-KEGGEnricherMatrixRealTime(inputSample,"mouse","fdr","fdr",0.05)
+#' }
 #' @importFrom stats p.adjust
 
 KEGGEnricherMatrixRealTime<-function(inputSample,
@@ -62,8 +67,9 @@ filterValuePathNameDF<-
 return (filterValuePathNameDF)
 }
 
-#' Get matrix of enriched KEGG pathway,
-#' plot barplot of significantly enriched KEGG pathway, mapping genes on KEGG pathway image
+#' Performe enrichment analysis based on KEGG pathway,
+#' plot barplot of significantly enriched KEGG pathway,
+#' mapping genes on KEGG pathway image
 #'
 #' @param inputSample input formatted sample
 #' @param inputSpecies human, mouse, rat
@@ -78,7 +84,14 @@ return (filterValuePathNameDF)
 #' @param imgHeight the height of export file
 #' @return data in dataframe class with pValue, adjust pValue of significate KEGG pathway
 #' @export
-#' @examples #KEGGSigMx<-Key2KEGGEnrich(inputSample,"mouse","fdr","fdr",0.05,TRUE,TRUE,"KEGG",15,20)
+#' @examples
+#' library(Key2Enrich)
+#' data(inputSample)
+#' inputSample<-as.data.frame(inputSample)
+#' head(inputSample)
+#' \dontrun{
+#' KEGGSigMx<-Key2KEGGEnrich(inputSample,"mouse","fdr","fdr",0.05,TRUE,TRUE,"KEGG",15,20)
+#' }
 
 Key2KEGGEnrich<-function (inputSample,
                           inputSpecies,
@@ -107,7 +120,12 @@ Key2KEGGEnrich<-function (inputSample,
 #' @param inputSpecies human, mouse, rat
 #' @return NA
 #' @export
-#' @examples #mappingOnSpecifiedKEGGPathway("mmu05160",inputSample,"mouse")
+#' @examples
+#' library(Key2Enrich)
+#' data(inputSample)
+#' inputSample<-as.data.frame(inputSample)
+#' head(inputSample)
+#' mappingOnSpecifiedKEGGPathway("mmu05160",inputSample,"mouse")
 
 mappingOnSpecifiedKEGGPathway<-function (plotPathID,inputSampleKEGG,inputSpecies){
   #plotPathID:specific KEGG pathway ID

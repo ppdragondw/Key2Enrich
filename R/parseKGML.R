@@ -3,45 +3,38 @@
 #' @param file file name
 #' @return xmlRoot of file
 #' @export
-#' @examples
-#' path<-system.file(package = "Key2Enrich")
-#' xmlPath<-paste(path,"/extdata",sep="")
-#' xmlFile<-paste(xmlPath,sep="","/hsa04012.xml")
-#' parseKGMLFile(xmlFile)
 #' @importFrom XML xmlTreeParse xmlAttrs xmlChildren xmlRoot xmlName xmlErrorCumulator
 
 parseKGMLFile <- function(file) {
-    tryCatch(
-        doc <-  xmlTreeParse(file, getDTD=FALSE,
-                            error=XML::xmlErrorCumulator(immediate=FALSE)),
-        error = function(e) {
-            fileSize <- file.info(file)$size[1]
-            bytes <- sprintf("%d byte%s",
-                             fileSize, ifelse(fileSize>1, "s", ""))
-            msg <- paste("The file",
-                         file,
-                         "seems not to be a valid KGML file\n")
-            if(fileSize<100L)
-                msg <- paste(msg,
-                             "[WARNING] File size (",
-                             bytes,
-                             ") is unsually small; please check.\n", sep="")
-            msg <- paste(msg,
-                         "\nDetailed error messages from",
-                         "XML::xmlTreeParse:\n", sep="")
-           cat(msg)
-           stop(e)
-        })
+  tryCatch(
+    doc <- xmlTreeParse(file, getDTD=FALSE,
+                        error=xmlErrorCumulator(immediate=FALSE)),
+    error = function(e) {
+      fileSize <- file.info(file)$size[1]
+      bytes <- sprintf("%d byte%s",
+                       fileSize, ifelse(fileSize>1, "s", ""))
+      msg <- paste("The file",
+                   file,
+                   "seems not to be a valid KGML file\n")
+      if(fileSize<100L)
+        msg <- paste(msg,
+                     "[WARNING] File size (",
+                     bytes,
+                     ") is unsually small; please check.\n", sep="")
+      msg <- paste(msg,
+                   "\nDetailed error messages from",
+                   "XML::xmlTreeParse:\n", sep="")
+      cat(msg)
+      stop(e)
+    })
   r <- xmlRoot(doc)
   return (r)
-  }
+}
 
 #' Get KEGG pathway info from xmlRoot
 #'
 #' @param r xmlRoot
 #' @return list class with entryID,name,type,link, X of graphic,Y of graphic,width of graphic,height of graphic
-#' @export
-#' @examples #getPathInfo(r)
   getPathInfo<-function(r){
   ## parse them
     attrs <- xmlAttrs(r)
@@ -61,12 +54,30 @@ parseKGMLFile <- function(file) {
                      pathLnk=pathLnk))
   }
 
+
+  #' childIsEntry
+  #'
+  #' @param r xml root
+  #' @return T or F
+  #' @export
+  #' @importFrom XML xmlChildren xmlName
   childIsEntry<-function(r){
   ## possible elements: entry, relation and reaction
   childnames <- sapply(xmlChildren(r), xmlName)
   isEntry <- childnames == "entry"
   return (isEntry)
   }
+
+
+
+
+  #' parseEntry
+  #'
+  #' @param entry this entry
+  #' @return a list of node value
+  #' @export
+  #' @importFrom XML xmlAttrs xmlChildren
+
 
   parseEntry <- function(entry) {
   attrs <- xmlAttrs(entry)
@@ -103,8 +114,6 @@ parseKGMLFile <- function(file) {
   #'
   #' @param thisGeneKEGGID gene KEGG ID
   #' @return character vector with name,type, X of graphic,Y of graphic,width of graphic,height of graphic
-  #' @export
-  #' @examples #parseGraphic(thisGeneKEGGID)
    parseGraphic <- function(thisGeneKEGGID) {
    graphicName<-unname(thisGeneKEGGID["name"])
    graphicType<-unname(thisGeneKEGGID["type"])
@@ -122,10 +131,19 @@ parseKGMLFile <- function(file) {
    #' @param nodeDF output dataframe
    #' @export
    #' @return dataframe class of node info
-   #' @examples #parseList2Dataframe(nodeList,nodeDF)
+   #' @examples
+   #' library(Key2Enrich)
+   #' path<-system.file(package = "Key2Enrich")
+   #' xmlPath<-paste(path,"/extdata",sep="")
+   #' xmlFile<-paste(xmlPath,sep="","/hsa04012.xml")
+   #' r<-parseKGMLFile(xmlFile)
+   #' kegg.nodes <- lapply(r[childIsEntry(r)], parseEntry)
+   #' nodeDF<-data.frame(KEGG_GeneID="NA",type=NA,link=NA,graphicName=NA,
+   #'                   graphicType=NA,graphicX=NA,graphicY=NA,
+   #'                   graphicWidth=NA,graphicHeight=NA)
+   #' nodeDF<-parseList2Dataframe(kegg.nodes,nodeDF)
+   #' head(nodeDF)
 parseList2Dataframe<-function(nodeList,nodeDF){
-
-
 	for(i in 1:length(nodeList)){
 	node<-nodeList[[i]]
 	if(node$type=="gene"){

@@ -15,6 +15,3 @@ character vector with name,type, X of graphic,Y of graphic,width of graphic,heig
 \description{
 Get info from list class of graphic info
 }
-\examples{
-#parseGraphic(thisGeneKEGGID)
-}

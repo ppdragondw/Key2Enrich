@@ -18,5 +18,15 @@ dataframe class of node info
 Convert list class of node info to dataframe
 }
 \examples{
-#parseList2Dataframe(nodeList,nodeDF)
+library(Key2Enrich)
+path<-system.file(package = "Key2Enrich")
+xmlPath<-paste(path,"/extdata",sep="")
+xmlFile<-paste(xmlPath,sep="","/hsa04012.xml")
+r<-parseKGMLFile(xmlFile)
+kegg.nodes <- lapply(r[childIsEntry(r)], parseEntry)
+nodeDF<-data.frame(KEGG_GeneID="NA",type=NA,link=NA,graphicName=NA,
+                  graphicType=NA,graphicX=NA,graphicY=NA,
+                  graphicWidth=NA,graphicHeight=NA)
+nodeDF<-parseList2Dataframe(kegg.nodes,nodeDF)
+head(nodeDF)
 }

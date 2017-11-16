@@ -2,8 +2,9 @@
 % Please edit documentation in R/Key2KEGGEnrich.R
 \name{Key2KEGGEnrich}
 \alias{Key2KEGGEnrich}
-\title{Get matrix of enriched KEGG pathway,
-plot barplot of significantly enriched KEGG pathway, mapping genes on KEGG pathway image}
+\title{Performe enrichment analysis based on KEGG pathway,
+plot barplot of significantly enriched KEGG pathway,
+mapping genes on KEGG pathway image}
 \usage{
 Key2KEGGEnrich(inputSample, inputSpecies, adjustMethod, filterMethod,
   filterValue, ifbarplot, ifMapOnPath, type, imgWidth, imgHeight)
@@ -34,9 +35,16 @@ c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")}
 data in dataframe class with pValue, adjust pValue of significate KEGG pathway
 }
 \description{
-Get matrix of enriched KEGG pathway,
-plot barplot of significantly enriched KEGG pathway, mapping genes on KEGG pathway image
+Performe enrichment analysis based on KEGG pathway,
+plot barplot of significantly enriched KEGG pathway,
+mapping genes on KEGG pathway image
 }
 \examples{
-#KEGGSigMx<-Key2KEGGEnrich(inputSample,"mouse","fdr","fdr",0.05,TRUE,TRUE,"KEGG",15,20)
+library(Key2Enrich)
+data(inputSample)
+inputSample<-as.data.frame(inputSample)
+head(inputSample)
+\dontrun{
+KEGGSigMx<-Key2KEGGEnrich(inputSample,"mouse","fdr","fdr",0.05,TRUE,TRUE,"KEGG",15,20)
+}
 }

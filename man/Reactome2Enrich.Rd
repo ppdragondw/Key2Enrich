@@ -28,5 +28,9 @@ data in dataframe class with pValue, adjust pValue of significate Reactome pathw
 Get enrichment matrix of enriched Reactome pathway
 }
 \examples{
-#reactomePValueMatrix<-Reactome2Enrich(inputSample,"mouse","fdr",0.05,15,20)
+library(Key2Enrich)
+data(inputSample)
+inputSample<-as.data.frame(inputSample)
+head(inputSample)
+reactomePValueMatrix<-Reactome2Enrich(inputSample,"mouse","fdr",0.05,15,20)
 }

@@ -24,6 +24,12 @@ Sample file in data.frame format
 Read samples files with different annotation ID
 }
 \examples{
-#entrezgene_sample<-readInputFile("sampleFile_entrezgene.csv",1,2,"entrezgene")
+library(Key2Enrich)
+path<-system.file(package = "Key2Enrich")
+filePath<-paste(path,"/extdata",sep="")
+file<-paste(filePath,sep="","/sampleFile.csv")
+entrezgene_sample<-readInputFile(file,IDColumn=1,
+                                 logFCColumn=2,IDType="mgi_symbol")
+head(entrezgene_sample)
 
 }

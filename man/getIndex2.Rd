@@ -17,7 +17,3 @@ index
 \description{
 Get index of value in array for left color key
 }
-\examples{
-# thisArray2<-seq(-2,0,length.out = 10)
-# getIndex2(thisArray2,1.6)
-}

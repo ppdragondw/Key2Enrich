@@ -15,7 +15,3 @@ species of KEGG format, human:hsa, mouse:mmu, rat:rno
 \description{
 Convert input species to KEGG species
 }
-\examples{
-#KEGGSpecies<-speciesKEGGConvert("mouse")
-
-}

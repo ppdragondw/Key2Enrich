@@ -26,5 +26,9 @@ input sample in dataframe class with entrez ID, symbol and ensembl ID
 Format input file to dataframe class with entrez ID, symbol and ensembl ID
 }
 \examples{
-#inputSample<-formatInputSample("./inst/extdata/sampleFile.csv",1,2,"entrezgene","mouse")
+library(Key2Enrich)
+path<-system.file(package = "Key2Enrich")
+filePath<-paste(path,"/extdata",sep="")
+file<-paste(filePath,sep="","/sampleFile.csv")
+inputSample<-formatInputSample(file,IDColumn=1,logFCColumn=2,"mgi_symbol","mouse")
 }

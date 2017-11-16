@@ -2,7 +2,7 @@
 % Please edit documentation in R/Key2KEGGEnrich.R
 \name{KEGGEnricherMatrixRealTime}
 \alias{KEGGEnricherMatrixRealTime}
-\title{Get enrichment matrix of enriched KEGG pathway}
+\title{Get enrichment output matrix of enriched KEGG pathway}
 \usage{
 KEGGEnricherMatrixRealTime(inputSample, inputSpecies, adjustMethod,
   filterMethod, filterValue)
@@ -23,8 +23,12 @@ c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")}
 data in dataframe class with pValue, adjust pValue of significate KEGG pathway
 }
 \description{
-Get enrichment matrix of enriched KEGG pathway
+Get enrichment output matrix of enriched KEGG pathway
 }
 \examples{
-#thisKEGGEnricherMatrix<-KEGGEnricherMatrixRealTime(inputSample,"mouse","fdr","fdr",0.05)
+data(inputSample)
+inputSample<-as.data.frame(inputSample)
+\dontrun{
+thisKEGGEnricherMatrix<-KEGGEnricherMatrixRealTime(inputSample,"mouse","fdr","fdr",0.05)
+}
 }

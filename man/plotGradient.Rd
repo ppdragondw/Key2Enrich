@@ -17,7 +17,3 @@ NA
 \description{
 Plot heatmap color key for node
 }
-\examples{
- #plotGradient(120,5)
-
-}

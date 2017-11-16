@@ -26,6 +26,12 @@ sample with entrez ID, symbol and ensembl ID
 Mapping input file with ID to symbol, entrez, ensembl IDs
 }
 \examples{
-#thisSampleWith3IDs<-sampleWith3IDs("sampleFile_entrezgene.csv",1,2,"entrezgene","mouse")
+library(Key2Enrich)
+path<-system.file(package = "Key2Enrich")
+filePath<-paste(path,"/extdata",sep="")
+file<-paste(filePath,sep="","/sampleFile.csv")
+thisSampleWith3IDs<-sampleWith3IDs(file,
+                                   IDColumn=1,logFCColumn=2,
+                                   IDType="mgi_symbol",inputSpecies="mouse")
 
 }

@@ -17,6 +17,3 @@ plot
 \description{
 Plot two image on same panel
 }
-\examples{
-#multiplot(p1,p2)
-}

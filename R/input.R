@@ -7,7 +7,15 @@
 #' Mouse: entrezgene, mgi_symbol, ensembl_gene_id,
 #' Rat: entrezgene, rgd_symbol, ensembl_gene_id
 #' @return Sample file in data.frame format
-#' @examples #entrezgene_sample<-readInputFile("sampleFile_entrezgene.csv",1,2,"entrezgene")
+#' @export
+#' @examples
+#' library(Key2Enrich)
+#' path<-system.file(package = "Key2Enrich")
+#' filePath<-paste(path,"/extdata",sep="")
+#' file<-paste(filePath,sep="","/sampleFile.csv")
+#' entrezgene_sample<-readInputFile(file,IDColumn=1,
+#'                                  logFCColumn=2,IDType="mgi_symbol")
+#' head(entrezgene_sample)
 #'
 readInputFile<-function (fileName,IDColumn,logFCColumn,IDType){
 inputSample<-read.csv(fileName)
@@ -32,7 +40,12 @@ return (sample)
 #' @param inputSpecies human, mouse, rat
 #' @return input sample in dataframe class with entrez ID, symbol and ensembl ID
 #' @export
-#' @examples #inputSample<-formatInputSample("./inst/extdata/sampleFile.csv",1,2,"entrezgene","mouse")
+#' @examples
+#' library(Key2Enrich)
+#' path<-system.file(package = "Key2Enrich")
+#' filePath<-paste(path,"/extdata",sep="")
+#' file<-paste(filePath,sep="","/sampleFile.csv")
+#' inputSample<-formatInputSample(file,IDColumn=1,logFCColumn=2,"mgi_symbol","mouse")
 
 formatInputSample<-function (filename,IDColumn,logFCColumn,IDType,inputSpecies){
   sample<-readInputFile(filename,IDColumn,logFCColumn,IDType)
@@ -57,7 +70,6 @@ formatInputSample<-function (filename,IDColumn,logFCColumn,IDType,inputSpecies){
 #' human:hsapiens_gene_ensembl,
 #' mouse:mmusculus_gene_ensembl,
 #' rat:rnorvegicus_gene_ensembl
-#' @examples #biomartSpecies<-speciesConvert2Biomart("mouse")
 #'
 speciesConvert2Biomart <- function(inputSpecies) {
   switch(inputSpecies,
@@ -70,7 +82,6 @@ speciesConvert2Biomart <- function(inputSpecies) {
 #'
 #' @param inputSpecies human, mouse, rat
 #' @return species of KEGG format, human:hsa, mouse:mmu, rat:rno
-#' @examples #KEGGSpecies<-speciesKEGGConvert("mouse")
 #'
 speciesKEGGConvert <- function(inputSpecies) {
   switch(inputSpecies,
@@ -82,7 +93,6 @@ speciesKEGGConvert <- function(inputSpecies) {
 #'
 #' @param thisKEGGSpecies species in KEGG format
 #' @return name of gene symbol
-#' @examples #geneSymbol<-getGeneSymbol("mouse")
 #'
 getGeneSymbol <- function(thisKEGGSpecies) {
     switch(thisKEGGSpecies,
@@ -98,7 +108,6 @@ getGeneSymbol <- function(thisKEGGSpecies) {
 #' human:- Homo sapiens,
 #' mouse:- Mus musculus,
 #' rat:- Rattus norvegicus
-#' @examples #KEGGSpeciesFlag<-speciesKEGGFlagConvert("mouse")
 #'
 speciesKEGGFlagConvert	 <- function(inputSpecies){
   #mouse:"- Mus musculus"
@@ -119,18 +128,21 @@ speciesKEGGFlagConvert	 <- function(inputSpecies){
 #' Mouse: entrezgene, mgi_symbol, ensembl_gene_id,
 #' Rat: entrezgene, rgd_symbol, ensembl_gene_id
 #' @param inputSpecies human, mouse, rat
+#' @export
 #' @return sample with entrez ID, symbol and ensembl ID
-#' @examples #thisSampleWith3IDs<-sampleWith3IDs("sampleFile_entrezgene.csv",1,2,"entrezgene","mouse")
+#' @examples
+#' library(Key2Enrich)
+#' path<-system.file(package = "Key2Enrich")
+#' filePath<-paste(path,"/extdata",sep="")
+#' file<-paste(filePath,sep="","/sampleFile.csv")
+#' thisSampleWith3IDs<-sampleWith3IDs(file,
+#'                                    IDColumn=1,logFCColumn=2,
+#'                                    IDType="mgi_symbol",inputSpecies="mouse")
 #'
 sampleWith3IDs<-function (filename,IDColumn,logFCColumn,IDType,inputSpecies){
-#inputSpecies mouse,human,rat
   sample<-readInputFile(filename,IDColumn,logFCColumn,IDType)
-  #KEGGSpecies<-speciesKEGGConvert(inputSpecies)
-
   IDColValue<-sample[,(names(sample)==IDType)]
-
   IDMapping<-getAllTypesID(inputSpecies,IDType,IDColValue)
   inputSampleWith3IDs<-merge(sample,IDMapping,by.x=IDType,by.y=IDType)
-
   return (inputSampleWith3IDs)
 }

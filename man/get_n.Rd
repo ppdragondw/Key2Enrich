@@ -18,6 +18,10 @@ n: the number of sample genes with KEGG gene ID
 Get the number of sample genes with KEGG gene ID
 }
 \examples{
-#get_n(inputSampleKEGG,allGeneInPathwayDF)
+library(Key2Enrich)
+data(inputSample)
+inputSample<-as.data.frame(inputSample)
+allGeneInPathwayDF<-getAllGeneInPathwayDF("mmu")
+print(n<-get_n(inputSample,allGeneInPathwayDF))
 
 }

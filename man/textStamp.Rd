@@ -15,7 +15,3 @@ NA
 \description{
 Add text stamp on image
 }
-\examples{
-# textStamp(100)
-
-}

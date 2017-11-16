@@ -18,6 +18,10 @@ sample genes in specific KEGG pathway
 Get sample genes in specific KEGG pathway
 }
 \examples{
-#get_inputSampleKEGG_m(thisInputSampleKEGG,geneInOnePathwayDF)
+library(Key2Enrich)
+geneInOnePathwayDF<-getGeneInOnePathwayDF("mmu05160","mmu")
+data(inputSample)
+inputSample<-as.data.frame(inputSample)
+get_inputSampleKEGG_m(inputSample,geneInOnePathwayDF)
 
 }

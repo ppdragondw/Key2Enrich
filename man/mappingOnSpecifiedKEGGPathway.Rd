@@ -20,5 +20,9 @@ NA
 Download KEGG pathway files and mapping genes on pathway
 }
 \examples{
-#mappingOnSpecifiedKEGGPathway("mmu05160",inputSample,"mouse")
+library(Key2Enrich)
+data(inputSample)
+inputSample<-as.data.frame(inputSample)
+head(inputSample)
+mappingOnSpecifiedKEGGPathway("mmu05160",inputSample,"mouse")
 }

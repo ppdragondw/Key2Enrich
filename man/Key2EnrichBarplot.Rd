@@ -22,5 +22,9 @@ data in dataframe class with pValue, adjust pValue
 Plot barplot
 }
 \examples{
-#reactomePValueMatrix<-Reactome2Enrich(inputSample,"mouse","fdr",0.05,15,20)
+library(Key2Enrich)
+data(inputSample)
+inputSample<-as.data.frame(inputSample)
+thisKEGGEnricherMatrix<-KEGGEnricherMatrixRealTime(inputSample,"mouse","fdr","fdr",0.05)
+Key2EnrichBarplot(thisKEGGEnricherMatrix,"KEGG",15,20)
 }

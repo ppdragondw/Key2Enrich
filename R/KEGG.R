@@ -3,8 +3,10 @@
 #' @param KEGGSpecies species in KEGG format
 #' @return KEGG pathway ID of input species
 #' @export
-#' @examples #getAllPathNameAndID("mmu")
 #' @import KEGGREST
+#' @examples
+#' library(Key2Enrich)
+#' getAllPathNameAndID("mmu")
 getAllPathNameAndID<-function (KEGGSpecies){
   pathways <- keggList("pathway",KEGGSpecies)
   pathways<-as.data.frame(pathways)
@@ -33,7 +35,9 @@ getAllPathNameAndID<-function (KEGGSpecies){
 #' @param KEGGSpecies species in KEGG format
 #' @return all KEGG Gene ID and its entrezgene ID of input KEGG species
 #' @export
-#' @examples #KEGGID2EntrezID("mmu")
+#' @examples
+#' library(Key2Enrich)
+#' KEGGID2EntrezID("mmu")
 
 KEGGID2EntrezID<-function(KEGGSpecies){
   all_KEGG_GeneIDtoGeneID<-keggConv("ncbi-geneid", KEGGSpecies)
@@ -51,7 +55,9 @@ KEGGID2EntrezID<-function(KEGGSpecies){
 #' @param KEGGSpecies species in KEGG format
 #' @return all KEGG pathway name of input KEGG species
 #' @export
-#' @examples #getTotalPathNames("mmu")
+#' @examples
+#' library(Key2Enrich)
+#' getTotalPathNames("mmu")
 #'
 getTotalPathNames<-function (KEGGSpecies){
   pathways <- keggList("pathway",KEGGSpecies)
@@ -75,8 +81,15 @@ getTotalPathNames<-function (KEGGSpecies){
 #' n the number of sample genes with KEGG gene ID,
 #' M:the number of all genes in specific KEGG pathway,
 #' m: the number of sample genes in specific KEGG pathway
-#' @examples #getPValue("mmu00053","mmu",thisInputSampleKEGG,N,n)
-#'
+#' @export
+#' @examples
+#' library(Key2Enrich)
+#' data(inputSample)
+#' inputSample<-as.data.frame(inputSample)
+#' allGeneInPathwayDF<-getAllGeneInPathwayDF("mmu")
+#' N<-getN(allGeneInPathwayDF)
+#' n<-get_n(inputSample,allGeneInPathwayDF)
+#' getPValue("mmu00053","mmu",inputSample,N,n)
 getPValue <- function(thispathwayID_DF,thisKEGGSpecies,thisInputSampleKEGG,N,n) {
   thisSymbol<-getGeneSymbol(thisKEGGSpecies)
   #print (paste("Working on ",thispathwayID_DF[1],sep=""))
@@ -127,7 +140,9 @@ getPValue <- function(thispathwayID_DF,thisKEGGSpecies,thisInputSampleKEGG,N,n) 
 #' @param KEGGSpecies species in KEGG format
 #' @return KEGG pathway ID, and its gene list in KEGG Gene ID format
 #' @export
-#' @examples #getAllGeneInPathwayDF("mmu")
+#' @examples
+#' library(Key2Enrich)
+#' getAllGeneInPathwayDF("mmu")
 
 getAllGeneInPathwayDF<-function(KEGGSpecies){
   allGeneInPathway<-keggLink(KEGGSpecies, "pathway")
@@ -140,7 +155,11 @@ getAllGeneInPathwayDF<-function(KEGGSpecies){
 #'
 #' @param allGeneInPathwayDF all KEGG pathway ID and its gene list in KEGG gene ID format
 #' @return N:the number of all genes with KEGG gene ID
-#' @examples #getN(allGeneInPathwayDF)
+#' @export
+#' @examples
+#' library(Key2Enrich)
+#' allGeneInPathwayDF<-getAllGeneInPathwayDF("mmu")
+#' print(N<-getN(allGeneInPathwayDF))
 #'
 getN<-function (allGeneInPathwayDF){
   N<-length(unique(allGeneInPathwayDF$KEGG_GeneID))
@@ -152,7 +171,13 @@ getN<-function (allGeneInPathwayDF){
 #' @param inputSampleKEGG input sample with in KEGG gene ID
 #' @param allGeneInPathwayDF all KEGG pathway ID and its gene list in KEGG gene ID format
 #' @return n: the number of sample genes with KEGG gene ID
-#' @examples #get_n(inputSampleKEGG,allGeneInPathwayDF)
+#' @export
+#' @examples
+#' library(Key2Enrich)
+#' data(inputSample)
+#' inputSample<-as.data.frame(inputSample)
+#' allGeneInPathwayDF<-getAllGeneInPathwayDF("mmu")
+#' print(n<-get_n(inputSample,allGeneInPathwayDF))
 #'
 get_n<-function (inputSampleKEGG,allGeneInPathwayDF){
   inputSampleKEGG_N<-merge(inputSampleKEGG,allGeneInPathwayDF,by.x="KEGG_GeneID",by.y="KEGG_GeneID")
@@ -166,9 +191,10 @@ get_n<-function (inputSampleKEGG,allGeneInPathwayDF){
 #' @param thispathID KEGG pathway ID
 #' @param KEGGSpecies species in KEGG format
 #' @return gene list in specific KEGG pathway
+#' @export
 #' @examples
-#' #library(Key2Enrich)
-#' #getGeneInOnePathwayDF("mmu05160","mmu")
+#' library(Key2Enrich)
+#' getGeneInOnePathwayDF("mmu05160","mmu")
 
 getGeneInOnePathwayDF<-function(thispathID,KEGGSpecies){ #("mmu05160","mmu")
   geneInOnePathway<-keggLink(KEGGSpecies,thispathID) #keggLink("mmu","mmu05160")
@@ -182,7 +208,13 @@ getGeneInOnePathwayDF<-function(thispathID,KEGGSpecies){ #("mmu05160","mmu")
 #' @param thisInputSampleKEGG input sample with in KEGG gene ID
 #' @param geneInOnePathwayDF gene list in specific KEGG pathway
 #' @return sample genes in specific KEGG pathway
-#' @examples #get_inputSampleKEGG_m(thisInputSampleKEGG,geneInOnePathwayDF)
+#' @export
+#' @examples
+#' library(Key2Enrich)
+#' geneInOnePathwayDF<-getGeneInOnePathwayDF("mmu05160","mmu")
+#' data(inputSample)
+#' inputSample<-as.data.frame(inputSample)
+#' get_inputSampleKEGG_m(inputSample,geneInOnePathwayDF)
 #'
 get_inputSampleKEGG_m<-function (thisInputSampleKEGG,geneInOnePathwayDF){
   inputSampleKEGG_M<-merge(thisInputSampleKEGG,
@@ -199,7 +231,6 @@ get_inputSampleKEGG_m<-function (thisInputSampleKEGG,geneInOnePathwayDF){
 #' @param inputSampleKEGG input sample with in KEGG gene ID
 #' @param inputSpecies KEGGSpecies species in KEGG format
 #' @return NA
-#' @examples #plotSigImg(filterPValueName,inputSampleKEGG,"mmu")
 #' @import graphics
 #' @import grDevices
 #' @import utils

@@ -6,7 +6,6 @@
 #' Rat: entrezgene, rgd_symbol, ensembl_gene_id
 #' @param geneIDCol the input ID
 #' @return input sample in dataframe class with entrez ID, symbol and ensembl ID
-#' @examples #getAllTypesID("mouse","entrezgene",geneIDCol)
 #' @import biomaRt
 
 getAllTypesID<-function(inputSpecies,inputIDType,geneIDCol){
