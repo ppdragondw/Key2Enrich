@@ -65,7 +65,7 @@ knitr::include_graphics('../inst/extdata/figure/KEGG_mapping2.png')
 
 Enrichment analysis based on Reactome pathways.
 ```{r fig.cap="Reactome enrichment bar plot", echo=TRUE, fig.show='hold', message=FALSE, warning=FALSE, fig.show='hide'}
-reactomePValueMatrix<-Reactome2Enrich(inputSample,"mouse","fdr",0.05)
+reactomePValueMatrix<-Reactome2Enrich(geneIDs=as.character(inputSample$entrezgene),"mouse","fdr",0.05)
 colnames(reactomePValueMatrix)
 head(reactomePValueMatrix[,1:6])
 ```
@@ -76,7 +76,7 @@ knitr::include_graphics('../inst/extdata/figure/reactome_barplot.png')
 
 Enrichment analysis based on terms of gene ontology.
 ```{r echo=TRUE, echo=TRUE, message=FALSE, warning=FALSE, out.width='97%',fig.show='hide'}
-egoDF<-GO2Enrich(inputSample,"mouse","fdr",0.05,"CC")
+egoDF<-GO2Enrich(geneIDs=as.character(inputSample$entrezgene),"mouse","fdr",0.05,"CC")
 colnames(egoDF)
 egoDF[,c(1:3,5:7)]
 ```
@@ -139,6 +139,17 @@ Parse KEGG xml file.
     nodeDF<-parseList2Dataframe(kegg.nodes,nodeDF)
     head(nodeDF)
 ```
+
+Key2Enrich support gene set identifiers in GSEABase class. 
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+data(gs)
+library(GSEABase)
+reactomePValueMatrix<-Reactome2Enrich(geneIds(gs),"mouse","fdr",0.05)
+
+egoDF<-GO2Enrich(geneIds(gs),"mouse","fdr",0.05,"CC")
+
+```
+
 ## SessionInfo
 ```{r echo=TRUE}
 sessionInfo()

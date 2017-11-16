@@ -4,11 +4,11 @@
 \alias{Reactome2Enrich}
 \title{Get enrichment matrix of enriched Reactome pathway}
 \usage{
-Reactome2Enrich(inputSample, inputSpecies, adjustMethod, filterValue, imgWidth,
+Reactome2Enrich(geneIDs, inputSpecies, adjustMethod, filterValue, imgWidth,
   imgHeight)
 }
 \arguments{
-\item{inputSample}{formatted input sample}
+\item{geneIDs}{gene identifiers}
 
 \item{inputSpecies}{human, mouse, rat}
 
@@ -32,5 +32,6 @@ library(Key2Enrich)
 data(inputSample)
 inputSample<-as.data.frame(inputSample)
 head(inputSample)
-reactomePValueMatrix<-Reactome2Enrich(inputSample,"mouse","fdr",0.05,15,20)
+reactomePValueMatrix<-Reactome2Enrich(geneIDs=as.character(inputSample$entrezgene),
+                                      "mouse","fdr",0.05,15,20)
 }

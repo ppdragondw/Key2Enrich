@@ -4,11 +4,11 @@
 \alias{GO2Enrich}
 \title{Perform Gene Ontology enrichment analysis}
 \usage{
-GO2Enrich(inputSample, inputSpecies, adjustMethod, filterValue, GOType,
-  imgWidth, imgHeight)
+GO2Enrich(geneIDs, inputSpecies, adjustMethod, filterValue, GOType, imgWidth,
+  imgHeight)
 }
 \arguments{
-\item{inputSample}{formatted input sample}
+\item{geneIDs}{gene identifiers}
 
 \item{inputSpecies}{human, mouse, rat}
 
@@ -35,7 +35,8 @@ library(Key2Enrich)
 data(inputSample)
 inputSample<-as.data.frame(inputSample)
 head(inputSample)
-egoDF<-GO2Enrich(inputSample=inputSample,inputSpecies="mouse",
+egoDF<-GO2Enrich(geneIDs= as.character(inputSample$entrezgene),
+                 inputSpecies="mouse",
                  adjustMethod="fdr",filterValue=0.05,GOType="BP",
                  imgWidth=15,imgHeight=20)
 }

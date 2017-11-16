@@ -1,6 +1,6 @@
 #' Perform Gene Ontology enrichment analysis
 #'
-#' @param inputSample  formatted input sample
+#' @param geneIDs  gene identifiers
 #' @param inputSpecies human, mouse, rat
 #' @param adjustMethod p.adjust.methods,
 #' c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")
@@ -16,7 +16,8 @@
 #' data(inputSample)
 #' inputSample<-as.data.frame(inputSample)
 #' head(inputSample)
-#' egoDF<-GO2Enrich(inputSample=inputSample,inputSpecies="mouse",
+#' egoDF<-GO2Enrich(geneIDs= as.character(inputSample$entrezgene),
+#'                  inputSpecies="mouse",
 #'                  adjustMethod="fdr",filterValue=0.05,GOType="BP",
 #'                  imgWidth=15,imgHeight=20)
 #' @import org.Hs.eg.db
@@ -24,7 +25,7 @@
 #' @import org.Rn.eg.db
 #' @importFrom  clusterProfiler enrichGO
 
-GO2Enrich<-function (inputSample,
+GO2Enrich<-function (geneIDs,
                      inputSpecies,
                      adjustMethod,
                      filterValue,
@@ -70,7 +71,7 @@ GO2Enrich<-function (inputSample,
 
   bg<-as.character(IDMapping$entrezgene)
   bg<-bg[which(bg!="NA")]
-  ego <- enrichGO(gene          = inputSample$entrezgene,
+  ego <- enrichGO(gene          = geneIDs,
                   universe      = bg,
                   OrgDb         = Db,
                   ont           = GOType,

@@ -1,7 +1,7 @@
 
 #' Get enrichment matrix of enriched Reactome pathway
 #'
-#' @param inputSample  formatted input sample
+#' @param geneIDs  gene identifiers
 #' @param inputSpecies human, mouse, rat
 #' @param adjustMethod p.adjust.methods,
 #' c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")
@@ -15,13 +15,13 @@
 #' data(inputSample)
 #' inputSample<-as.data.frame(inputSample)
 #' head(inputSample)
-#' reactomePValueMatrix<-Reactome2Enrich(inputSample,"mouse","fdr",0.05,15,20)
+#' reactomePValueMatrix<-Reactome2Enrich(geneIDs=as.character(inputSample$entrezgene),
+#'                                       "mouse","fdr",0.05,15,20)
 #' @importFrom  ReactomePA enrichPathway
-Reactome2Enrich<-function (inputSample,inputSpecies,
+Reactome2Enrich<-function (geneIDs,inputSpecies,
                            adjustMethod,filterValue,
                            imgWidth,imgHeight) {
-
-reactomePValueMatrix<- enrichPathway(gene=as.character(inputSample$entrezgene),
+reactomePValueMatrix<- enrichPathway(gene=geneIDs,
                                     qvalueCutoff=filterValue,
                                     readable=T,
                                     pAdjustMethod=adjustMethod,

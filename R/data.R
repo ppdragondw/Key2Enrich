@@ -18,3 +18,16 @@
 #'   \item{KEGG_GeneID}{KEGG gene ID}
 #' }
 "inputSample"
+
+
+#' Sample in GSEABase class
+#'
+#' The data from Affymetrix microarray of western diet feed mouse (WD)
+#' vs. low fat diet feed mouse (LF) were used as an example.
+#' differential expressed genes were identified with cutoff FDR<0.05 using limma R package.
+#'
+#' @format Sample in GSEABase class:
+#' \describe{
+#'   \item{geneIds}{entrez gene ID}
+#' }
+"gs"
