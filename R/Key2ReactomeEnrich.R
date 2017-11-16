@@ -11,7 +11,6 @@
 #' @return data in dataframe class with pValue, adjust pValue of significate Reactome pathway
 #' @export
 #' @examples
-#' library(Key2Enrich)
 #' data(inputSample)
 #' inputSample<-as.data.frame(inputSample)
 #' head(inputSample)
@@ -23,7 +22,7 @@ Reactome2Enrich<-function (geneIDs,inputSpecies,
                            imgWidth,imgHeight) {
 reactomePValueMatrix<- enrichPathway(gene=geneIDs,
                                     qvalueCutoff=filterValue,
-                                    readable=T,
+                                    readable=TRUE,
                                     pAdjustMethod=adjustMethod,
                                     organism = inputSpecies)
 

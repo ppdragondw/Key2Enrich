@@ -34,6 +34,7 @@ parseKGMLFile <- function(file) {
 #' Get KEGG pathway info from xmlRoot
 #'
 #' @param r xmlRoot
+#' @importFrom XML xmlAttrs
 #' @return list class with entryID,name,type,link, X of graphic,Y of graphic,width of graphic,height of graphic
   getPathInfo<-function(r){
   ## parse them
@@ -67,8 +68,6 @@ parseKGMLFile <- function(file) {
   isEntry <- childnames == "entry"
   return (isEntry)
   }
-
-
 
 
   #' parseEntry
@@ -132,7 +131,6 @@ parseKGMLFile <- function(file) {
    #' @export
    #' @return dataframe class of node info
    #' @examples
-   #' library(Key2Enrich)
    #' path<-system.file(package = "Key2Enrich")
    #' xmlPath<-paste(path,"/extdata",sep="")
    #' xmlFile<-paste(xmlPath,sep="","/hsa04012.xml")

@@ -75,6 +75,7 @@ getIndex2<-function (thisArray,thisValue){
 #' @param thisWidth the width of color key
 #' @param thisHeight the height of color key
 #' @return NA
+#' @importFrom grDevices colorRampPalette
 plotGradient<- function (thisWidth,thisHeight){
   gradientWidth<-7
   gradientHeight<-20

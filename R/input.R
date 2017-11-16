@@ -9,7 +9,6 @@
 #' @return Sample file in data.frame format
 #' @export
 #' @examples
-#' library(Key2Enrich)
 #' path<-system.file(package = "Key2Enrich")
 #' filePath<-paste(path,"/extdata",sep="")
 #' file<-paste(filePath,sep="","/sampleFile.csv")
@@ -41,7 +40,6 @@ return (sample)
 #' @return input sample in dataframe class with entrez ID, symbol and ensembl ID
 #' @export
 #' @examples
-#' library(Key2Enrich)
 #' path<-system.file(package = "Key2Enrich")
 #' filePath<-paste(path,"/extdata",sep="")
 #' file<-paste(filePath,sep="","/sampleFile.csv")
@@ -131,7 +129,6 @@ speciesKEGGFlagConvert	 <- function(inputSpecies){
 #' @export
 #' @return sample with entrez ID, symbol and ensembl ID
 #' @examples
-#' library(Key2Enrich)
 #' path<-system.file(package = "Key2Enrich")
 #' filePath<-paste(path,"/extdata",sep="")
 #' file<-paste(filePath,sep="","/sampleFile.csv")

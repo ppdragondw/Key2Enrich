@@ -24,7 +24,6 @@ Sample file in data.frame format
 Read samples files with different annotation ID
 }
 \examples{
-library(Key2Enrich)
 path<-system.file(package = "Key2Enrich")
 filePath<-paste(path,"/extdata",sep="")
 file<-paste(filePath,sep="","/sampleFile.csv")

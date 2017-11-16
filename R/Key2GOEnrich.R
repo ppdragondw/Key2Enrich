@@ -11,8 +11,6 @@
 #' @return data in dataframe class with pValue, adjust pValue of significate Gene Ontology
 #' @export
 #' @examples
-#'
-#' library(Key2Enrich)
 #' data(inputSample)
 #' inputSample<-as.data.frame(inputSample)
 #' head(inputSample)

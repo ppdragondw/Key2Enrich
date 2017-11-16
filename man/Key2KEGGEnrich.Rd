@@ -40,7 +40,6 @@ plot barplot of significantly enriched KEGG pathway,
 mapping genes on KEGG pathway image
 }
 \examples{
-library(Key2Enrich)
 data(inputSample)
 inputSample<-as.data.frame(inputSample)
 head(inputSample)

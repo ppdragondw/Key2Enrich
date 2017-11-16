@@ -16,7 +16,6 @@ N:the number of all genes with KEGG gene ID
 Get the number of all genes with KEGG gene ID
 }
 \examples{
-library(Key2Enrich)
 allGeneInPathwayDF<-getAllGeneInPathwayDF("mmu")
 print(N<-getN(allGeneInPathwayDF))
 

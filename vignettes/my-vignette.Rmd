@@ -48,8 +48,9 @@ These step can be done by using one function. The figure sizes have been customi
 ```{r echo=TRUE, fig.show='hold', message=FALSE, warning=FALSE}
 
 KEGGSigMx<-Key2KEGGEnrich(inputSample=inputSample,inputSpecies="mouse",
-                          adjustMethod="fdr",filterMethod="fdr",filterValue=0.05,
-                          ifbarplot=TRUE,ifMapOnPath=TRUE,type="KEGG",
+                          adjustMethod="fdr",filterMethod="fdr",
+                          filterValue=0.05,ifbarplot=TRUE,
+                          ifMapOnPath=TRUE,type="KEGG",
                           imgWidth=15,imgHeight=20)
 head(KEGGSigMx[c(1:6,11:13)])
 ```

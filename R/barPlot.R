@@ -5,12 +5,12 @@
 #' @param imgWidth the width of export file
 #' @param imgHeight the height of export file
 #' @return data in dataframe class with pValue, adjust pValue
-#' @import ggplot2
 #' @importFrom grDevices pdf
-#' @import org.Hs.eg.db org.Mm.eg.db org.Rn.eg.db
+#' @import org.Hs.eg.db
+#' @import org.Mm.eg.db
+#' @import org.Rn.eg.db
 #' @export
 #' @examples
-#' library(Key2Enrich)
 #' data(inputSample)
 #' inputSample<-as.data.frame(inputSample)
 #' thisKEGGEnricherMatrix<-KEGGEnricherMatrixRealTime(inputSample,"mouse","fdr","fdr",0.05)
@@ -57,7 +57,7 @@ Key2EnrichBarplot<-function (filterValuePathNameDF,type,imgWidth,imgHeight)
       theme_bw()+theme(axis.text=element_text(size=14),axis.title.x=element_text(size=14))
 
     p2<-ggplot(data= filterValuePathNameDF, aes(x=pathName, y=ratio)) +
-      geom_line(data= filterValuePathNameDF, aes(x=pathName,y = filterValuePathNameDF$ratio,color="orange",group=1),show.legend = F,size=1)+
+      geom_line(data= filterValuePathNameDF, aes(x=pathName,y = filterValuePathNameDF$ratio,color="orange",group=1),show.legend = FALSE,size=1)+
       geom_point(data= filterValuePathNameDF, mapping = aes(x=pathName,y = filterValuePathNameDF$ratio,group=1),size =2, shape = 21, fill = "yellow") +
       scale_x_discrete(limits= filterValuePathNameDF$pathName) +
       labs(title="",x ="", y = "Gene ratio")+
@@ -77,6 +77,7 @@ Key2EnrichBarplot<-function (filterValuePathNameDF,type,imgWidth,imgHeight)
 #' @param p2 ggplot
 #' @return plot
 #' @import grid gtable
+#' @import ggplot2
 
 multiplot <- function(p1,p2) {
   grid.newpage()

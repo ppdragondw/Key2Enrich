@@ -18,7 +18,6 @@ dataframe class of node info
 Convert list class of node info to dataframe
 }
 \examples{
-library(Key2Enrich)
 path<-system.file(package = "Key2Enrich")
 xmlPath<-paste(path,"/extdata",sep="")
 xmlFile<-paste(xmlPath,sep="","/hsa04012.xml")

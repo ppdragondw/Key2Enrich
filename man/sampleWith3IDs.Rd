@@ -26,7 +26,6 @@ sample with entrez ID, symbol and ensembl ID
 Mapping input file with ID to symbol, entrez, ensembl IDs
 }
 \examples{
-library(Key2Enrich)
 path<-system.file(package = "Key2Enrich")
 filePath<-paste(path,"/extdata",sep="")
 file<-paste(filePath,sep="","/sampleFile.csv")

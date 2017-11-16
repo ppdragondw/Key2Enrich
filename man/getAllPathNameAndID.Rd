@@ -16,6 +16,5 @@ KEGG pathway ID of input species
 Get all KEGG pathway name and ID of species
 }
 \examples{
-library(Key2Enrich)
 getAllPathNameAndID("mmu")
 }

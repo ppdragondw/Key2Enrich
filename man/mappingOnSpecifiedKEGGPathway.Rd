@@ -20,7 +20,6 @@ NA
 Download KEGG pathway files and mapping genes on pathway
 }
 \examples{
-library(Key2Enrich)
 data(inputSample)
 inputSample<-as.data.frame(inputSample)
 head(inputSample)

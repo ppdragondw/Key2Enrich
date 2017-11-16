@@ -85,7 +85,6 @@ return (filterValuePathNameDF)
 #' @return data in dataframe class with pValue, adjust pValue of significate KEGG pathway
 #' @export
 #' @examples
-#' library(Key2Enrich)
 #' data(inputSample)
 #' inputSample<-as.data.frame(inputSample)
 #' head(inputSample)
@@ -121,7 +120,6 @@ Key2KEGGEnrich<-function (inputSample,
 #' @return NA
 #' @export
 #' @examples
-#' library(Key2Enrich)
 #' data(inputSample)
 #' inputSample<-as.data.frame(inputSample)
 #' head(inputSample)
