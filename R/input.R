@@ -8,6 +8,7 @@
 #' Rat: entrezgene, rgd_symbol, ensembl_gene_id
 #' @return Sample file in data.frame format
 #' @export
+#' @importFrom utils read.csv
 #' @examples
 #' path<-system.file(package = "Key2Enrich")
 #' filePath<-paste(path,"/extdata",sep="")

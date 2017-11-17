@@ -5,10 +5,11 @@
 #' @param imgWidth the width of export file
 #' @param imgHeight the height of export file
 #' @return data in dataframe class with pValue, adjust pValue
-#' @importFrom grDevices pdf
 #' @import org.Hs.eg.db
 #' @import org.Mm.eg.db
 #' @import org.Rn.eg.db
+#' @importFrom grDevices dev.off pdf
+#' @importFrom ggplot2 ggplot aes scale_x_discrete geom_bar theme_bw theme element_text coord_flip geom_line geom_point
 #' @export
 #' @examples
 #' data(inputSample)
@@ -23,7 +24,7 @@ Key2EnrichBarplot<-function (filterValuePathNameDF,type,imgWidth,imgHeight)
   if (type=="KEGG") {
     thisColor="cyan4"
     fileName<- paste(type,"pathway enrichment.pdf")
-  }
+    }
   else if (type=="Reactome") {
     thisColor="springgreen4"
     fileName<- paste(type,"pathway enrichment.pdf")
@@ -76,8 +77,8 @@ Key2EnrichBarplot<-function (filterValuePathNameDF,type,imgWidth,imgHeight)
 #' @param p1 ggplot
 #' @param p2 ggplot
 #' @return plot
-#' @import grid gtable
-#' @import ggplot2
+#' @importFrom grid grid.newpage grid.draw
+#' @importFrom gtable gtable_add_grob gtable_add_rows
 
 multiplot <- function(p1,p2) {
   grid.newpage()

@@ -76,6 +76,8 @@ getIndex2<-function (thisArray,thisValue){
 #' @param thisHeight the height of color key
 #' @return NA
 #' @importFrom grDevices colorRampPalette
+#' @importFrom graphics rect
+
 plotGradient<- function (thisWidth,thisHeight){
   gradientWidth<-7
   gradientHeight<-20
@@ -110,6 +112,8 @@ plotGradient<- function (thisWidth,thisHeight){
 #'
 #' @param thisWidth the width of text stamp
 #' @return NA
+#' @importFrom graphics text
+
 textStamp<- function (thisWidth){
   text(thisWidth-136,11,"Rendered by Key2Enrich on KEGG",cex=0.3,font=2)
 }

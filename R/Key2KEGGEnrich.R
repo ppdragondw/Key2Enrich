@@ -8,13 +8,13 @@
 #' @param filterValue must by numeric, value from 0 to 1
 #' @return data in dataframe class with pValue, adjust pValue of significate KEGG pathway
 #' @export
+#' @importFrom stats p.adjust
 #' @examples
 #' data(inputSample)
 #' inputSample<-as.data.frame(inputSample)
 #' \dontrun{
 #' thisKEGGEnricherMatrix<-KEGGEnricherMatrixRealTime(inputSample,"mouse","fdr","fdr",0.05)
 #' }
-#' @importFrom stats p.adjust
 
 KEGGEnricherMatrixRealTime<-function(inputSample,
                                      inputSpecies,

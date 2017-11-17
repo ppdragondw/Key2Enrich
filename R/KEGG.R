@@ -3,7 +3,7 @@
 #' @param KEGGSpecies species in KEGG format
 #' @return KEGG pathway ID of input species
 #' @export
-#' @import KEGGREST
+#' @importFrom KEGGREST keggList
 #' @examples
 #' getAllPathNameAndID("mmu")
 getAllPathNameAndID<-function (KEGGSpecies){
@@ -34,6 +34,7 @@ getAllPathNameAndID<-function (KEGGSpecies){
 #' @param KEGGSpecies species in KEGG format
 #' @return all KEGG Gene ID and its entrezgene ID of input KEGG species
 #' @export
+#' @importFrom KEGGREST keggConv
 #' @examples
 #' KEGGID2EntrezID("mmu")
 
@@ -53,6 +54,7 @@ KEGGID2EntrezID<-function(KEGGSpecies){
 #' @param KEGGSpecies species in KEGG format
 #' @return all KEGG pathway name of input KEGG species
 #' @export
+#' @importFrom KEGGREST keggList
 #' @examples
 #' getTotalPathNames("mmu")
 #'
@@ -78,6 +80,7 @@ getTotalPathNames<-function (KEGGSpecies){
 #' n the number of sample genes with KEGG gene ID,
 #' M:the number of all genes in specific KEGG pathway,
 #' m: the number of sample genes in specific KEGG pathway
+#' @importFrom KEGGREST keggLink
 #' @export
 #' @examples
 #' data(inputSample)
@@ -136,6 +139,7 @@ getPValue <- function(thispathwayID_DF,thisKEGGSpecies,thisInputSampleKEGG,N,n) 
 #' @param KEGGSpecies species in KEGG format
 #' @return KEGG pathway ID, and its gene list in KEGG Gene ID format
 #' @export
+#' @importFrom KEGGREST keggLink
 #' @examples
 #' getAllGeneInPathwayDF("mmu")
 
@@ -184,6 +188,7 @@ get_n<-function (inputSampleKEGG,allGeneInPathwayDF){
 #' @param thispathID KEGG pathway ID
 #' @param KEGGSpecies species in KEGG format
 #' @return gene list in specific KEGG pathway
+#' @importFrom KEGGREST keggLink
 #' @export
 #' @examples
 #' getGeneInOnePathwayDF("mmu05160","mmu")
@@ -222,10 +227,11 @@ get_inputSampleKEGG_m<-function (thisInputSampleKEGG,geneInOnePathwayDF){
 #' @param inputSampleKEGG input sample with in KEGG gene ID
 #' @param inputSpecies KEGGSpecies species in KEGG format
 #' @return NA
-#' @import graphics
-#' @import grDevices
-#' @import utils
+#' @importFrom grDevices rgb png
+#' @importFrom graphics rasterImage par plot
+#' @importFrom utils download.file
 #' @import png
+
 
 plotSigImg<-function(filterPValueName,inputSampleKEGG,inputSpecies){
 
