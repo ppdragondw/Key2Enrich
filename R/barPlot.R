@@ -9,7 +9,7 @@
 #' @import org.Mm.eg.db
 #' @import org.Rn.eg.db
 #' @importFrom grDevices dev.off pdf
-#' @importFrom ggplot2 ggplot aes scale_x_discrete geom_bar theme_bw theme element_text coord_flip geom_line geom_point
+#' @import ggplot2
 #' @export
 #' @examples
 #' data(inputSample)
@@ -77,8 +77,9 @@ Key2EnrichBarplot<-function (filterValuePathNameDF,type,imgWidth,imgHeight)
 #' @param p1 ggplot
 #' @param p2 ggplot
 #' @return plot
-#' @importFrom grid grid.newpage grid.draw
+#' @importFrom grid grid.newpage grid.draw unit
 #' @importFrom gtable gtable_add_grob gtable_add_rows
+#' @import ggplot2
 
 multiplot <- function(p1,p2) {
   grid.newpage()

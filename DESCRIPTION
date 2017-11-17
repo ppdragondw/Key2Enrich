@@ -1,7 +1,7 @@
 Package: Key2Enrich
 Type: Package
 Title: R package of gene set enrichment analysis 
-Version: 0.99.10
+Version: 0.99.11
 Author: Dong Wang
 Maintainer: Dong Wang <dong.2.wang@ucdenver.edu>
 Description: This package provides enrichment analysis function for gene/protein dataset. The dataset can be mapped on KEGGG/GO Ontology/Reactome database.
