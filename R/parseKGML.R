@@ -3,8 +3,13 @@
 #' @param file file name
 #' @return xmlRoot of file
 #' @export
-#' @importFrom XML xmlTreeParse xmlAttrs xmlChildren xmlRoot xmlName xmlErrorCumulator
-
+#' @importFrom XML xmlTreeParse xmlAttrs xmlChildren
+#' xmlRoot xmlName xmlErrorCumulator
+#' @examples
+#' path<-system.file(package = "Key2Enrich")
+#' xmlPath<-paste(path,"/extdata",sep="")
+#' xmlFile<-paste(xmlPath,sep="","/hsa04012.xml")
+#' r<-parseKGMLFile(xmlFile)
 parseKGMLFile <- function(file) {
   tryCatch(
     doc <- xmlTreeParse(file, getDTD=FALSE,
@@ -62,6 +67,12 @@ parseKGMLFile <- function(file) {
   #' @return T or F
   #' @export
   #' @importFrom XML xmlChildren xmlName
+  #' @examples
+  #' path<-system.file(package = "Key2Enrich")
+  #' xmlPath<-paste(path,"/extdata",sep="")
+  #' xmlFile<-paste(xmlPath,sep="","/hsa04012.xml")
+  #' r<-parseKGMLFile(xmlFile)
+  #' kegg.nodes <- lapply(r[childIsEntry(r)], parseEntry)
   childIsEntry<-function(r){
   ## possible elements: entry, relation and reaction
   childnames <- sapply(xmlChildren(r), xmlName)
@@ -76,8 +87,19 @@ parseKGMLFile <- function(file) {
   #' @return a list of node value
   #' @export
   #' @importFrom XML xmlAttrs xmlChildren
-
-
+  #' @examples
+  #' path<-system.file(package = "Key2Enrich")
+  #' xmlPath<-paste(path,"/extdata",sep="")
+  #' xmlFile<-paste(xmlPath,sep="","/hsa04012.xml")
+  #' r<-parseKGMLFile(xmlFile)
+  #' kegg.nodes <- lapply(r[childIsEntry(r)], parseEntry)
+  #' \donttest{
+  #' nodeDF<-data.frame(KEGG_GeneID="NA",type=NA,link=NA,graphicName=NA,
+  #'                   graphicType=NA,graphicX=NA,graphicY=NA,
+  #'                   graphicWidth=NA,graphicHeight=NA)
+  #' nodeDF<-parseList2Dataframe(kegg.nodes,nodeDF)
+  #' head(nodeDF)
+  #' }
   parseEntry <- function(entry) {
   attrs <- xmlAttrs(entry)
 
@@ -141,34 +163,34 @@ parseKGMLFile <- function(file) {
    #'                   graphicWidth=NA,graphicHeight=NA)
    #' nodeDF<-parseList2Dataframe(kegg.nodes,nodeDF)
    #' head(nodeDF)
-parseList2Dataframe<-function(nodeList,nodeDF){
-	for(i in 1:length(nodeList)){
-	node<-nodeList[[i]]
-	if(node$type=="gene"){
-	thisNodeGene<-node$name
-	thisNodeType<-node$type
-	thisNodeLink<-node$link
-	thisNodeGraphicName<-node$graphicName
-	thisNodeGraphicType<-node$graphicType
-	thisNodeGraphicX<-node$graphicX
-	thisNodeGraphicY<-node$graphicY
-	thisNodeGraphicWidth<-node$graphicWidth
-	thisNodeGraphicHeight<-node$graphicHeight
+   parseList2Dataframe<-function(nodeList,nodeDF){
+    for(i in 1:length(nodeList)){
+    node<-nodeList[[i]]
+    if(node$type=="gene"){
+    thisNodeGene<-node$name
+    thisNodeType<-node$type
+    thisNodeLink<-node$link
+    thisNodeGraphicName<-node$graphicName
+    thisNodeGraphicType<-node$graphicType
+    thisNodeGraphicX<-node$graphicX
+    thisNodeGraphicY<-node$graphicY
+    thisNodeGraphicWidth<-node$graphicWidth
+    thisNodeGraphicHeight<-node$graphicHeight
 
-	thisNodeGeneNum<-length(thisNodeGene)
+    thisNodeGeneNum<-length(thisNodeGene)
 
    for (m in 1:thisNodeGeneNum)
    {
    newNodeDF<-data.frame(KEGG_GeneID=thisNodeGene[m],
    type=thisNodeType,
    link=thisNodeLink,
-	graphicName=thisNodeGraphicName,
-	graphicType=thisNodeGraphicType,
-	graphicX=thisNodeGraphicX,
-	graphicY=thisNodeGraphicY,
-	graphicWidth=thisNodeGraphicWidth,
-	graphicHeight=thisNodeGraphicHeight)
-	nodeDF<-rbind(newNodeDF,nodeDF)
+   graphicName=thisNodeGraphicName,
+   graphicType=thisNodeGraphicType,
+   graphicX=thisNodeGraphicX,
+   graphicY=thisNodeGraphicY,
+   graphicWidth=thisNodeGraphicWidth,
+   graphicHeight=thisNodeGraphicHeight)
+   nodeDF<-rbind(newNodeDF,nodeDF)
    }
 }
 }

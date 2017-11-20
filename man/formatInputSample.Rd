@@ -11,7 +11,8 @@ formatInputSample(filename, IDColumn, logFCColumn, IDType, inputSpecies)
 
 \item{IDColumn}{must be numberic,the column number of sample ID}
 
-\item{logFCColumn}{must be numberic,the column number of sample log fold change}
+\item{logFCColumn}{must be numberic,
+the column number of sample log fold change}
 
 \item{IDType}{Human: entrezgene, hgnc_symbol, ensembl_gene_id,
 Mouse: entrezgene, mgi_symbol, ensembl_gene_id,
@@ -29,5 +30,11 @@ Format input file to dataframe class with entrez ID, symbol and ensembl ID
 path<-system.file(package = "Key2Enrich")
 filePath<-paste(path,"/extdata",sep="")
 file<-paste(filePath,sep="","/sampleFile.csv")
-inputSample<-formatInputSample(file,IDColumn=1,logFCColumn=2,"mgi_symbol","mouse")
+\donttest{
+inputSample<-formatInputSample(file,
+                               IDColumn=1,
+                               logFCColumn=2,
+                               "mgi_symbol",
+                               "mouse")
+                               }
 }

@@ -2,7 +2,8 @@
 #'
 #' @param fileName input file in csv format
 #' @param IDColumn must be numberic,the column number of sample ID
-#' @param logFCColumn must be numberic,the column number of sample log fold change
+#' @param logFCColumn must be numberic,
+#' the column number of sample log fold change
 #' @param IDType Human: entrezgene, hgnc_symbol, ensembl_gene_id,
 #' Mouse: entrezgene, mgi_symbol, ensembl_gene_id,
 #' Rat: entrezgene, rgd_symbol, ensembl_gene_id
@@ -16,7 +17,7 @@
 #' entrezgene_sample<-readInputFile(file,IDColumn=1,
 #'                                  logFCColumn=2,IDType="mgi_symbol")
 #' head(entrezgene_sample)
-#'
+
 readInputFile<-function (fileName,IDColumn,logFCColumn,IDType){
 inputSample<-read.csv(fileName)
 sample<-subset(inputSample,select=-c(IDColumn,logFCColumn))
@@ -33,7 +34,8 @@ return (sample)
 #'
 #' @param filename input file in csv format
 #' @param IDColumn must be numberic,the column number of sample ID
-#' @param logFCColumn must be numberic,the column number of sample log fold change
+#' @param logFCColumn must be numberic,
+#' the column number of sample log fold change
 #' @param IDType Human: entrezgene, hgnc_symbol, ensembl_gene_id,
 #' Mouse: entrezgene, mgi_symbol, ensembl_gene_id,
 #' Rat: entrezgene, rgd_symbol, ensembl_gene_id
@@ -44,22 +46,31 @@ return (sample)
 #' path<-system.file(package = "Key2Enrich")
 #' filePath<-paste(path,"/extdata",sep="")
 #' file<-paste(filePath,sep="","/sampleFile.csv")
-#' inputSample<-formatInputSample(file,IDColumn=1,logFCColumn=2,"mgi_symbol","mouse")
-
-formatInputSample<-function (filename,IDColumn,logFCColumn,IDType,inputSpecies){
-  sample<-readInputFile(filename,IDColumn,logFCColumn,IDType)
-  IDColValue<-sample[,(names(sample)==IDType)]
-  IDMapping<-getAllTypesID(inputSpecies,IDType,IDColValue)
-  inputSampleWith3IDs<-merge(sample,
+#' \donttest{
+#' inputSample<-formatInputSample(file,
+#'                                IDColumn=1,
+#'                                logFCColumn=2,
+#'                                "mgi_symbol",
+#'                                "mouse")
+#'                                }
+formatInputSample<-function (filename,
+                               IDColumn,
+                               logFCColumn,
+                               IDType,
+                               inputSpecies){
+    sample<-readInputFile(filename,IDColumn,logFCColumn,IDType)
+    IDColValue<-sample[,(names(sample)==IDType)]
+    IDMapping<-getAllTypesID(inputSpecies,IDType,IDColValue)
+    inputSampleWith3IDs<-merge(sample,
                              IDMapping,
                              by.x=IDType,
                              by.y=IDType)
-  KEGGSpecies<-speciesKEGGConvert(inputSpecies)
-  inputSampleKEGG<-merge(inputSampleWith3IDs,
+    KEGGSpecies<-speciesKEGGConvert(inputSpecies)
+    inputSampleKEGG<-merge(inputSampleWith3IDs,
                          KEGGID2EntrezID(KEGGSpecies),
                          by.x="entrezgene",
                          by.y="entrezgene")
-  return (inputSampleKEGG)
+    return (inputSampleKEGG)
 }
 
 #' Convert input species to biomart species
@@ -71,7 +82,7 @@ formatInputSample<-function (filename,IDColumn,logFCColumn,IDType,inputSpecies){
 #' rat:rnorvegicus_gene_ensembl
 #'
 speciesConvert2Biomart <- function(inputSpecies) {
-  switch(inputSpecies,
+    switch(inputSpecies,
          mouse = "mmusculus_gene_ensembl",
          human = "hsapiens_gene_ensembl",
          rat = "rnorvegicus_gene_ensembl")
@@ -83,7 +94,7 @@ speciesConvert2Biomart <- function(inputSpecies) {
 #' @return species of KEGG format, human:hsa, mouse:mmu, rat:rno
 #'
 speciesKEGGConvert <- function(inputSpecies) {
-  switch(inputSpecies,
+switch(inputSpecies,
          mouse = "mmu",
          human = "hsa",
          rat = "rno")
@@ -108,21 +119,22 @@ getGeneSymbol <- function(thisKEGGSpecies) {
 #' mouse:- Mus musculus,
 #' rat:- Rattus norvegicus
 #'
-speciesKEGGFlagConvert	 <- function(inputSpecies){
-  #mouse:"- Mus musculus"
-  #human:"- Homo sapiens"
-  #rat:"- Rattus norvegicus"
-  switch(inputSpecies,
-         mmu = "- Mus musculus",
-         hsa = "- Homo sapiens",
-         rno = "- Rattus norvegicus")
+speciesKEGGFlagConvert<- function(inputSpecies){
+#mouse:"- Mus musculus"
+#human:"- Homo sapiens"
+#rat:"- Rattus norvegicus"
+switch(inputSpecies,
+      mmu = "- Mus musculus",
+      hsa = "- Homo sapiens",
+      rno = "- Rattus norvegicus")
 }
 
 #' Mapping input file with ID to symbol, entrez, ensembl IDs
 #'
 #' @param filename input file in csv format
 #' @param IDColumn must be numberic,the column number of sample ID
-#' @param logFCColumn must be numberic,the column number of sample log fold change
+#' @param logFCColumn must be numberic,
+#' the column number of sample log fold change
 #' @param IDType Human: entrezgene, hgnc_symbol, ensembl_gene_id,
 #' Mouse: entrezgene, mgi_symbol, ensembl_gene_id,
 #' Rat: entrezgene, rgd_symbol, ensembl_gene_id
@@ -133,14 +145,20 @@ speciesKEGGFlagConvert	 <- function(inputSpecies){
 #' path<-system.file(package = "Key2Enrich")
 #' filePath<-paste(path,"/extdata",sep="")
 #' file<-paste(filePath,sep="","/sampleFile.csv")
+#' \donttest{
 #' thisSampleWith3IDs<-sampleWith3IDs(file,
-#'                                    IDColumn=1,logFCColumn=2,
-#'                                    IDType="mgi_symbol",inputSpecies="mouse")
-#'
-sampleWith3IDs<-function (filename,IDColumn,logFCColumn,IDType,inputSpecies){
-  sample<-readInputFile(filename,IDColumn,logFCColumn,IDType)
-  IDColValue<-sample[,(names(sample)==IDType)]
-  IDMapping<-getAllTypesID(inputSpecies,IDType,IDColValue)
-  inputSampleWith3IDs<-merge(sample,IDMapping,by.x=IDType,by.y=IDType)
-  return (inputSampleWith3IDs)
-}
+#'                                    IDColumn=1,
+#'                                    logFCColumn=2,
+#'                                    IDType="mgi_symbol",
+#'                                    inputSpecies="mouse")
+#' }
+
+    sampleWith3IDs<-function (filename,
+                              IDColumn,logFCColumn,
+                              IDType,inputSpecies){
+    sample<-readInputFile(filename,IDColumn,logFCColumn,IDType)
+    IDColValue<-sample[,(names(sample)==IDType)]
+    IDMapping<-getAllTypesID(inputSpecies,IDType,IDColValue)
+    inputSampleWith3IDs<-merge(sample,IDMapping,by.x=IDType,by.y=IDType)
+    return (inputSampleWith3IDs)
+    }

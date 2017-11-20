@@ -16,13 +16,9 @@ getAllPathNameAndID<-function (KEGGSpecies){
 
   splitCol1<-strsplit(as.character(pathways$pathID),':',fixed=TRUE)
   pathways<-data.frame(pathways,do.call(rbind, splitCol1))
-
-  #splitCol2<-strsplit(as.character(pathways$pathName),"- Mus musculus",fixed=TRUE).
   splitCol2<-strsplit(as.character(pathways$pathName),
                       speciesKEGGFlagConvert(KEGGSpecies),fixed=TRUE)
-
   pathways<-data.frame(pathways,do.call(rbind, splitCol2))
-
   pathways<-pathways[c(5,4)]
   colnames(pathways)<-c("pathName","pathID")
 
@@ -36,13 +32,18 @@ getAllPathNameAndID<-function (KEGGSpecies){
 #' @export
 #' @importFrom KEGGREST keggConv
 #' @examples
-#' KEGGID2EntrezID("mmu")
-
+#' KEGGSpecies<-"mmu"
+#' \donttest{
+#' KEGGID2EntrezID(KEGGSpecies)
+#' }
 KEGGID2EntrezID<-function(KEGGSpecies){
   all_KEGG_GeneIDtoGeneID<-keggConv("ncbi-geneid", KEGGSpecies)
-  all_KEGG_GeneIDtoGeneIDDF<-data.frame(names(all_KEGG_GeneIDtoGeneID),all_KEGG_GeneIDtoGeneID)
-  splitCol<-strsplit(as.character(all_KEGG_GeneIDtoGeneIDDF$names.all_KEGG_GeneIDtoGeneID.),':',fixed=TRUE)
-  all_KEGG_GeneIDtoGeneIDDF<-data.frame(all_KEGG_GeneIDtoGeneIDDF,do.call(rbind, splitCol))
+  all_KEGG_GeneIDtoGeneIDDF<-data.frame(names(all_KEGG_GeneIDtoGeneID),
+                                        all_KEGG_GeneIDtoGeneID)
+  splitCol<-strsplit(as.character(all_KEGG_GeneIDtoGeneIDDF$names.all_KEGG_GeneIDtoGeneID.),
+                     ':',fixed=TRUE)
+  all_KEGG_GeneIDtoGeneIDDF<-data.frame(all_KEGG_GeneIDtoGeneIDDF,
+                                        do.call(rbind, splitCol))
   all_KEGG_GeneIDtoGeneIDDF<-all_KEGG_GeneIDtoGeneIDDF[,-c(2,3)]
   colnames(all_KEGG_GeneIDtoGeneIDDF)<-c("KEGG_GeneID","entrezgene")
   rownames(all_KEGG_GeneIDtoGeneIDDF)<- NULL
@@ -61,7 +62,8 @@ KEGGID2EntrezID<-function(KEGGSpecies){
 getTotalPathNames<-function (KEGGSpecies){
   pathways <- keggList("pathway",KEGGSpecies)
   KEGGPathwayIDs<-data.frame(names(pathways))
-  splitCol<-strsplit(as.character(KEGGPathwayIDs$names.pathways.),':',fixed=TRUE)
+  splitCol<-strsplit(as.character(KEGGPathwayIDs$names.pathways.),
+                     ':',fixed=TRUE)
   KEGGPathwayIDs<-data.frame(KEGGPathwayIDs,do.call(rbind, splitCol))
   KEGGPathwayIDs<-data.frame(KEGGPathwayIDs[,c(3)])
   colnames(KEGGPathwayIDs)<-"pathwayName"
@@ -85,15 +87,21 @@ getTotalPathNames<-function (KEGGSpecies){
 #' @examples
 #' data(inputSample)
 #' inputSample<-as.data.frame(inputSample)
+#' \donttest{
 #' allGeneInPathwayDF<-getAllGeneInPathwayDF("mmu")
 #' N<-getN(allGeneInPathwayDF)
 #' n<-get_n(inputSample,allGeneInPathwayDF)
 #' getPValue("mmu00053","mmu",inputSample,N,n)
-getPValue <- function(thispathwayID_DF,thisKEGGSpecies,thisInputSampleKEGG,N,n) {
+#' }
+getPValue <- function(thispathwayID_DF,
+                      thisKEGGSpecies,
+                      thisInputSampleKEGG,
+                      N,n) {
   thisSymbol<-getGeneSymbol(thisKEGGSpecies)
   #print (paste("Working on ",thispathwayID_DF[1],sep=""))
   #cat("\nCaculate M\n")
-  geneInOnePathway<- keggLink(thisKEGGSpecies,thispathwayID_DF[1]) #keggLink("mmu","mmu05140")
+  geneInOnePathway<- keggLink(thisKEGGSpecies,thispathwayID_DF[1])
+  #keggLink("mmu","mmu05140")
   geneInOnePathwayDF<-data.frame(names(geneInOnePathway),geneInOnePathway)
   colnames(geneInOnePathwayDF)<-c("pathwayID","KEGG_GeneID")
   #M
@@ -156,9 +164,11 @@ getAllGeneInPathwayDF<-function(KEGGSpecies){
 #' @return N:the number of all genes with KEGG gene ID
 #' @export
 #' @examples
+#' KEGGSpecies<-"mmu"
+#' \donttest{
 #' allGeneInPathwayDF<-getAllGeneInPathwayDF("mmu")
 #' print(N<-getN(allGeneInPathwayDF))
-#'
+#' }
 getN<-function (allGeneInPathwayDF){
   N<-length(unique(allGeneInPathwayDF$KEGG_GeneID))
   return (N)
@@ -173,9 +183,10 @@ getN<-function (allGeneInPathwayDF){
 #' @examples
 #' data(inputSample)
 #' inputSample<-as.data.frame(inputSample)
+#' \donttest{
 #' allGeneInPathwayDF<-getAllGeneInPathwayDF("mmu")
 #' print(n<-get_n(inputSample,allGeneInPathwayDF))
-#'
+#' }
 get_n<-function (inputSampleKEGG,allGeneInPathwayDF){
   inputSampleKEGG_N<-merge(inputSampleKEGG,allGeneInPathwayDF,by.x="KEGG_GeneID",by.y="KEGG_GeneID")
   nrow(inputSampleKEGG_N)
@@ -207,11 +218,12 @@ getGeneInOnePathwayDF<-function(thispathID,KEGGSpecies){ #("mmu05160","mmu")
 #' @return sample genes in specific KEGG pathway
 #' @export
 #' @examples
-#' geneInOnePathwayDF<-getGeneInOnePathwayDF("mmu05160","mmu")
 #' data(inputSample)
 #' inputSample<-as.data.frame(inputSample)
+#' \donttest{
+#' geneInOnePathwayDF<-getGeneInOnePathwayDF("mmu05160","mmu")
 #' get_inputSampleKEGG_m(inputSample,geneInOnePathwayDF)
-#'
+#' }
 get_inputSampleKEGG_m<-function (thisInputSampleKEGG,geneInOnePathwayDF){
   inputSampleKEGG_M<-merge(thisInputSampleKEGG,
                            geneInOnePathwayDF,

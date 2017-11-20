@@ -1,4 +1,5 @@
-#' Convert input file ID to dataframe class with entrez ID, symbol and ensembl ID
+#' Convert input file ID to dataframe class
+#' with entrez ID, symbol and ensembl ID
 #'
 #' @param inputSpecies human, mouse, rat
 #' @param inputIDType Human: entrezgene, hgnc_symbol, ensembl_gene_id,

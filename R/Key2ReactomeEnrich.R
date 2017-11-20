@@ -14,8 +14,10 @@
 #' data(inputSample)
 #' inputSample<-as.data.frame(inputSample)
 #' head(inputSample)
+#' \donttest{
 #' reactomePValueMatrix<-Reactome2Enrich(geneIDs=as.character(inputSample$entrezgene),
 #'                                       "mouse","fdr",0.05,15,20)
+#' }
 #' @importFrom  ReactomePA enrichPathway
 Reactome2Enrich<-function (geneIDs,inputSpecies,
                            adjustMethod,filterValue,

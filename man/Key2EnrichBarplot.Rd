@@ -24,6 +24,12 @@ Plot barplot
 \examples{
 data(inputSample)
 inputSample<-as.data.frame(inputSample)
-thisKEGGEnricherMatrix<-KEGGEnricherMatrixRealTime(inputSample,"mouse","fdr","fdr",0.05)
+\donttest{
+thisKEGGEnricherMatrix<-KEGGEnricherMatrixRealTime(inputSample,
+                                                   "mouse",
+                                                   "fdr",
+                                                   "fdr",
+                                                   0.05)
 Key2EnrichBarplot(thisKEGGEnricherMatrix,"KEGG",15,20)
+}
 }

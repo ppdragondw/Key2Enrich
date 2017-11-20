@@ -30,8 +30,10 @@ Calculate p-value and adjust p-value of KEGG pathway on input sample
 \examples{
 data(inputSample)
 inputSample<-as.data.frame(inputSample)
+\donttest{
 allGeneInPathwayDF<-getAllGeneInPathwayDF("mmu")
 N<-getN(allGeneInPathwayDF)
 n<-get_n(inputSample,allGeneInPathwayDF)
 getPValue("mmu00053","mmu",inputSample,N,n)
+}
 }

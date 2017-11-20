@@ -32,9 +32,14 @@ Perform Gene Ontology enrichment analysis
 \examples{
 data(inputSample)
 inputSample<-as.data.frame(inputSample)
+\donttest{
 head(inputSample)
 egoDF<-GO2Enrich(geneIDs= as.character(inputSample$entrezgene),
                  inputSpecies="mouse",
-                 adjustMethod="fdr",filterValue=0.05,GOType="BP",
-                 imgWidth=15,imgHeight=20)
+                 adjustMethod="fdr",
+                 filterValue=0.05,
+                 GOType="BP",
+                 imgWidth=15,
+                 imgHeight=20)
+}
 }

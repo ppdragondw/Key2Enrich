@@ -31,6 +31,8 @@ Get enrichment matrix of enriched Reactome pathway
 data(inputSample)
 inputSample<-as.data.frame(inputSample)
 head(inputSample)
+\donttest{
 reactomePValueMatrix<-Reactome2Enrich(geneIDs=as.character(inputSample$entrezgene),
                                       "mouse","fdr",0.05,15,20)
+}
 }

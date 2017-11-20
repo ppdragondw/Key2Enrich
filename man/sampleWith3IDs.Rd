@@ -11,7 +11,8 @@ sampleWith3IDs(filename, IDColumn, logFCColumn, IDType, inputSpecies)
 
 \item{IDColumn}{must be numberic,the column number of sample ID}
 
-\item{logFCColumn}{must be numberic,the column number of sample log fold change}
+\item{logFCColumn}{must be numberic,
+the column number of sample log fold change}
 
 \item{IDType}{Human: entrezgene, hgnc_symbol, ensembl_gene_id,
 Mouse: entrezgene, mgi_symbol, ensembl_gene_id,
@@ -29,8 +30,11 @@ Mapping input file with ID to symbol, entrez, ensembl IDs
 path<-system.file(package = "Key2Enrich")
 filePath<-paste(path,"/extdata",sep="")
 file<-paste(filePath,sep="","/sampleFile.csv")
+\donttest{
 thisSampleWith3IDs<-sampleWith3IDs(file,
-                                   IDColumn=1,logFCColumn=2,
-                                   IDType="mgi_symbol",inputSpecies="mouse")
-
+                                   IDColumn=1,
+                                   logFCColumn=2,
+                                   IDType="mgi_symbol",
+                                   inputSpecies="mouse")
+}
 }

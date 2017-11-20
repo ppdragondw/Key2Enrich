@@ -2,7 +2,8 @@
 % Please edit documentation in R/bioMart.R
 \name{getAllTypesID}
 \alias{getAllTypesID}
-\title{Convert input file ID to dataframe class with entrez ID, symbol and ensembl ID}
+\title{Convert input file ID to dataframe class
+with entrez ID, symbol and ensembl ID}
 \usage{
 getAllTypesID(inputSpecies, inputIDType, geneIDCol)
 }
@@ -19,5 +20,6 @@ Rat: entrezgene, rgd_symbol, ensembl_gene_id}
 input sample in dataframe class with entrez ID, symbol and ensembl ID
 }
 \description{
-Convert input file ID to dataframe class with entrez ID, symbol and ensembl ID
+Convert input file ID to dataframe class
+with entrez ID, symbol and ensembl ID
 }

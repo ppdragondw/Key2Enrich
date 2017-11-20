@@ -123,7 +123,9 @@ Key2KEGGEnrich<-function (inputSample,
 #' data(inputSample)
 #' inputSample<-as.data.frame(inputSample)
 #' head(inputSample)
+#' \dontrun{
 #' mappingOnSpecifiedKEGGPathway("mmu05160",inputSample,"mouse")
+#' }
 
 mappingOnSpecifiedKEGGPathway<-function (plotPathID,inputSampleKEGG,inputSpecies){
   #plotPathID:specific KEGG pathway ID

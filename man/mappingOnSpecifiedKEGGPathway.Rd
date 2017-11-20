@@ -23,5 +23,7 @@ Download KEGG pathway files and mapping genes on pathway
 data(inputSample)
 inputSample<-as.data.frame(inputSample)
 head(inputSample)
+\dontrun{
 mappingOnSpecifiedKEGGPathway("mmu05160",inputSample,"mouse")
+}
 }

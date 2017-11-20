@@ -13,7 +13,9 @@ gs
 }
 \description{
 The data from Affymetrix microarray of western diet feed mouse (WD)
-vs. low fat diet feed mouse (LF) were used as an example.
-differential expressed genes were identified with cutoff FDR<0.05 using limma R package.
+vs. low fat diet feed mouse (LF)
+were used as an example.
+differential expressed genes were identified with
+cutoff FDR<0.05 using limma R package.
 }
 \keyword{datasets}

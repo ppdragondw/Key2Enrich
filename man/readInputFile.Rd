@@ -11,7 +11,8 @@ readInputFile(fileName, IDColumn, logFCColumn, IDType)
 
 \item{IDColumn}{must be numberic,the column number of sample ID}
 
-\item{logFCColumn}{must be numberic,the column number of sample log fold change}
+\item{logFCColumn}{must be numberic,
+the column number of sample log fold change}
 
 \item{IDType}{Human: entrezgene, hgnc_symbol, ensembl_gene_id,
 Mouse: entrezgene, mgi_symbol, ensembl_gene_id,
@@ -30,5 +31,4 @@ file<-paste(filePath,sep="","/sampleFile.csv")
 entrezgene_sample<-readInputFile(file,IDColumn=1,
                                  logFCColumn=2,IDType="mgi_symbol")
 head(entrezgene_sample)
-
 }

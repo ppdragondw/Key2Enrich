@@ -20,7 +20,8 @@ Get the number of sample genes with KEGG gene ID
 \examples{
 data(inputSample)
 inputSample<-as.data.frame(inputSample)
+\donttest{
 allGeneInPathwayDF<-getAllGeneInPathwayDF("mmu")
 print(n<-get_n(inputSample,allGeneInPathwayDF))
-
+}
 }
